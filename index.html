@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AfricInvest AI Leadership Summit · Agenda</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cambria:wght@400;700&display=swap">
+  <style>
+    :root {
+      --bg-light: #F8F9FA;
+      --bg-card: #FFFFFF;
+      --text-primary: #0A1828;
+      --text-secondary: #4A5C60;
+      --text-light: #7A8A92;
+      --border: #E0E4E8;
+      --accent-teal: #028090;
+      --accent-orange: #FF8C42;
+      --accent-maroon: #8B3A3A;
+      --accent-blue: #1E40AF;
+      --category-inspiration: #8B3A3A;
+      --category-foundational: #1E40AF;
+      --category-learning: #028090;
+      --category-takeaways: #FF8C42;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg-light: #0F1419;
+        --bg-card: #1A2332;
+        --text-primary: #F0F4F8;
+        --text-secondary: #D0D8E0;
+        --text-light: #A0A8B0;
+        --border: #2A3A4A;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg-light: #0F1419;
+      --bg-card: #1A2332;
+      --text-primary: #F0F4F8;
+      --text-secondary: #D0D8E0;
+      --text-light: #A0A8B0;
+      --border: #2A3A4A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-light);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      min-width: 0;
+    }
+
+    .logo {
+      width: 60px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    .header-text h1 {
+      font-family: "Cambria", Georgia, serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .header-text p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .controls {
+      display: flex;
+      gap: 1.5rem;
+      margin-left: auto;
+      align-items: center;
+    }
+
+    .day-tabs {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--bg-light);
+      border-radius: 8px;
+      padding: 0.25rem;
+    }
+
+    .day-tab {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: transparent;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .day-tab.active {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .track-toggle {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--bg-light);
+      border-radius: 8px;
+      padding: 0.25rem;
+    }
+
+    .track-option {
+      padding: 0.5rem 0.875rem;
+      border: none;
+      background: transparent;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .track-option.active {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .controls {
+        width: 100%;
+        margin-left: 0;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .day-tabs,
+      .track-toggle {
+        width: 100%;
+      }
+
+      .day-tab,
+      .track-option {
+        flex: 1;
+        text-align: center;
+      }
+    }
+
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .day-content {
+      display: none;
+    }
+
+    .day-content.active {
+      display: block;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .time-block {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      border-bottom: 1px solid var(--border);
+      min-height: 100px;
+      align-items: stretch;
+    }
+
+    .time-slot {
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border-right: 1px solid var(--border);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .sessions-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--bg-light);
+      padding: 0;
+    }
+
+    .sessions-row.joint {
+      grid-template-columns: 1fr;
+    }
+
+    .session {
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border-left: 4px solid var(--border);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+
+    .session:last-child {
+      border-right: none;
+    }
+
+    .session.inspiration {
+      border-left-color: var(--category-inspiration);
+    }
+
+    .session.foundational {
+      border-left-color: var(--category-foundational);
+    }
+
+    .session.learning {
+      border-left-color: var(--category-learning);
+    }
+
+    .session.takeaways {
+      border-left-color: var(--category-takeaways);
+    }
+
+    .session.break {
+      border-left-color: var(--border);
+      background: var(--bg-light);
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+    }
+
+    .session-category {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+      color: var(--text-light);
+    }
+
+    .session-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+      text-wrap: balance;
+    }
+
+    .session-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+    }
+
+    .detail-label {
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .detail-value {
+      color: var(--text-primary);
+    }
+
+    .session-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: auto;
+    }
+
+    .session-link {
+      display: inline-block;
+      font-size: 0.875rem;
+      color: var(--accent-teal);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+      word-break: break-word;
+    }
+
+    .session-link:hover {
+      border-bottom-color: var(--accent-teal);
+    }
+
+    .track-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .legend {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+    }
+
+    .legend-swatch {
+      width: 4px;
+      height: 16px;
+      border-radius: 2px;
+    }
+
+    .legend-swatch.inspiration {
+      background: var(--category-inspiration);
+    }
+
+    .legend-swatch.foundational {
+      background: var(--category-foundational);
+    }
+
+    .legend-swatch.learning {
+      background: var(--category-learning);
+    }
+
+    .legend-swatch.takeaways {
+      background: var(--category-takeaways);
+    }
+
+    .content-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding: 1rem;
+      }
+
+      .time-block {
+        grid-template-columns: 60px 1fr;
+      }
+
+      .time-slot {
+        font-size: 0.75rem;
+        padding: 1rem;
+      }
+
+      .session {
+        padding: 1rem;
+      }
+
+      .session-title {
+        font-size: 0.9rem;
+      }
+
+      .sessions-row {
+        grid-template-columns: 1fr !important;
+      }
+
+      .track-label {
+        display: none;
+      }
+
+      .legend {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-section">
+      <svg class="logo" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+        <rect x="50" y="8" width="80" height="5" fill="#8B3A3A" />
+        <rect x="50" y="17" width="80" height="5" fill="#028090" />
+        <rect x="50" y="60" width="80" height="5" fill="#FF8C42" />
+        <text x="20" y="50" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#0A1828">AI</text>
+        <text x="70" y="50" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#0A1828">SUMMIT</text>
+      </svg>
+      <div class="header-text">
+        <h1>Summit Agenda</h1>
+        <p>September 18–19, 2026 · Tunis</p>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="day-tabs">
+        <button class="day-tab active" data-day="day1">Day 1</button>
+        <button class="day-tab" data-day="day2">Day 2</button>
+      </div>
+      <div class="track-toggle">
+        <button class="track-option active" data-view="both">Both Tracks</button>
+        <button class="track-option" data-view="foundations">Foundations</button>
+        <button class="track-option" data-view="frontier">Frontier</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-swatch inspiration"></div>
+        <span>Inspiration</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch foundational"></div>
+        <span>Foundational Learning</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch learning"></div>
+        <span>Peer Learning & Problem-Solving</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch takeaways"></div>
+        <span>Takeaways & Roadmaps</span>
+      </div>
+    </div>
+
+    <!-- DAY 1 -->
+    <div class="day-content active" data-day="day1">
+      <div class="timeline" id="day1-timeline">
+        <!-- Sessions populated by JavaScript -->
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day-content" data-day="day2">
+      <div class="timeline" id="day2-timeline">
+        <!-- Sessions populated by JavaScript -->
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const day1Sessions = [
+      { time: "08:30–08:45", type: "inspiration", title: "Opening — Thank-yous & acknowledgements", speaker: "Khaled", joint: true },
+      { time: "08:45–09:05", type: "inspiration", title: "Opening — Inspirational talk", speaker: "AMI founder (TBC)", joint: true },
+      { time: "09:05–09:20", type: "inspiration", title: "Opening — Who we are & framing", speaker: "Richard", materials: "AfricInvest_Opening_v2", joint: true },
+      { time: "09:20–09:27", type: "inspiration", title: "Opening — Open Startup", speaker: "Houda", joint: true },
+      { time: "09:27–10:00", type: "inspiration", title: "Opening — Team intros (15 teams)", speaker: "Dali", materials: "AfricInvest_Team_Intro_Template", joint: true },
+      { time: "10:00–10:30", type: "break", title: "Coffee / tea break", joint: true },
+      {
+        time: "10:30–11:45",
+        type: "foundational",
+        title: "AI Fundamentals masterclass",
+        foundations: { speaker: "Richard", materials: "AfricInvest_AI_Fundamentals_v3" },
+        frontier: { speaker: "Anthony & JC" },
+        joint: false
+      },
+      { time: "11:45–11:55", type: "foundational", title: "Roadmap prep", foundations: { speaker: "Ghazi & Zack" }, frontier: { speaker: "JC" }, joint: false },
+      { time: "11:55–12:00", type: "foundational", title: "Walk-through of worksheet", foundations: { speaker: "Ghazi & Zack?" }, frontier: { speaker: "JC" }, joint: false },
+      {
+        time: "12:00–12:15",
+        type: "learning",
+        title: "Prioritization exercise",
+        foundations: { speaker: "Richard", materials: "AfricInvest_Prioritization_Exercise" },
+        frontier: { speaker: "Anthony & JC", materials: "AfricInvest_HotSeats_Day1" },
+        joint: false
+      },
+      {
+        time: "12:15–12:35",
+        type: "learning",
+        title: "Team pitches",
+        foundations: { speaker: "Richard" },
+        frontier: { speaker: "Anthony & JC" },
+        joint: false
+      },
+      {
+        time: "12:35–13:00",
+        type: "learning",
+        title: "The agent build",
+        foundations: { speaker: "Ghazi & Zack?", materials: "AfricInvest_Agent_Build_Brief" },
+        frontier: { speaker: "Anthony & JC" },
+        joint: false
+      },
+      { time: "13:00–13:45", type: "break", title: "Lunch", joint: true },
+      {
+        time: "13:45–14:45",
+        type: "learning",
+        title: "Red-team & evals — the Reality Check",
+        foundations: { speaker: "Zack + Ghazi", materials: "AfricInvest_RedTeam_Slides" },
+        frontier: { speaker: "Anthony & JC" },
+        joint: false
+      },
+      { time: "14:45–15:30", type: "learning", title: "Debate 1 — Multi-model architectures", speaker: "Richard + Khaled", materials: "AfricInvest_Debate_1_Single_Vendor", joint: true },
+      { time: "15:30–16:00", type: "inspiration", title: "Inspiration showcase — 3 companies", speaker: "Dali", joint: true },
+      { time: "16:00–16:15", type: "break", title: "Coffee / tea break", joint: true },
+      { time: "16:15–16:45", type: "inspiration", title: "Inspirational talk", speaker: "Jean-Claude", joint: true },
+      { time: "16:45–17:30", type: "learning", title: "Debate 2 — Cost & pricing paradigms", speaker: "Richard + Khaled", materials: "AfricInvest_Debate_2_Outcome_Pricing", joint: true },
+      { time: "17:30–17:45", type: "takeaways", title: "Roadmap walkthrough", speaker: "Richard with Zack", joint: true },
+      { time: "17:45–18:15", type: "takeaways", title: "Roadmap Lab I — first draft", speaker: "OS + AI", joint: true },
+      { time: "18:15–18:30", type: "takeaways", title: "Day-one close", speaker: "Richard or Khaled?", joint: true },
+      { time: "18:30–18:45", type: "break", title: "Satisfaction survey", joint: true },
+      { time: "18:45–19:00", type: "break", title: "Break — reset / freshen up", joint: true },
+      { time: "19:00–21:00", type: "break", title: "Dinner (off-site)", joint: true }
+    ];
+
+    const day2Sessions = [
+      { time: "09:00–09:20", type: "takeaways", title: "Reset & day-two promise", speaker: "Richard", joint: true },
+      { time: "09:20–09:35", type: "inspiration", title: "Inspirational talk", speaker: "Kimi / AMI founder (TBC)", joint: true },
+      { time: "09:35–10:25", type: "foundational", title: "Data foundations and data/regulatory", speaker: "Richard & Anthony", materials: "AfricInvest_Scale_Session", joint: true },
+      { time: "10:25–10:55", type: "foundational", title: "Hands-on — what it takes to scale", speaker: "Richard & Anthony", joint: true },
+      { time: "10:55–11:25", type: "break", title: "Coffee / tea break", joint: true },
+      { time: "11:25–12:10", type: "learning", title: "Org and talent discussion", speaker: "Jean-Claude and Khaled", joint: true },
+      {
+        time: "12:10–13:00",
+        type: "takeaways",
+        title: "Roadmap Lab II — deepen & resource",
+        foundations: { speaker: "Ghazi & Zack", materials: "AfricInvest_Day2_AI_Roadmap" },
+        frontier: { speaker: "JC + Anthony" },
+        joint: false
+      },
+      { time: "13:00–13:45", type: "break", title: "Lunch", joint: true },
+      { time: "13:45–14:30", type: "learning", title: "Debate 3 — Open-weight vs. closed-source", speaker: "Anthony & Khaled", materials: "AfricInvest_Debate_3_Open_Weights", joint: true },
+      { time: "14:30–15:25", type: "learning", title: "Hot seats — Foundation companies", speaker: "Dali & Richard", joint: true },
+      { time: "15:25–15:55", type: "break", title: "Coffee / tea break", joint: true },
+      { time: "15:55–16:25", type: "foundational", title: "Tooling landscape & model selection", speaker: "Steve Seow (Microsoft, Zoom)", joint: true },
+      { time: "16:25–17:30", type: "takeaways", title: "Roadmap hot seats & commitment", speaker: "Khaled", joint: true },
+      { time: "17:30–17:50", type: "takeaways", title: "Community & post-summit launch", speaker: "Dali?", joint: true },
+      { time: "17:50–18:10", type: "takeaways", title: "Day 2 & summit close", speaker: "Richard", joint: true },
+      { time: "18:10–18:15", type: "break", title: "Satisfaction survey", joint: true },
+      { time: "18:15–19:15", type: "break", title: "Break / organizers debrief", joint: true },
+      { time: "19:15–19:30", type: "break", title: "Transfer to restaurant", joint: true },
+      { time: "19:30–21:30", type: "break", title: "Dinner", joint: true }
+    ];
+
+    function getCategoryClass(type) {
+      const map = { inspiration: "inspiration", foundational: "foundational", learning: "learning", takeaways: "takeaways", break: "break" };
+      return map[type] || "break";
+    }
+
+    function createSessionHtml(session, view) {
+      if (session.joint) {
+        const materials = session.materials ? `<a href="https://docs.google.com/search?q=${encodeURIComponent(session.materials)}" class="session-link" target="_blank">${session.materials}</a>` : "";
+        return `
+          <div class="time-block">
+            <div class="time-slot">${session.time}</div>
+            <div class="sessions-row joint">
+              <div class="session ${getCategoryClass(session.type)}">
+                <div>
+                  <div class="session-category">${session.type === "break" ? "Break" : session.type.replace(/-/g, " ")}</div>
+                  <div class="session-title">${session.title}</div>
+                  ${session.speaker ? `<div class="session-details"><span class="detail-value">${session.speaker}</span></div>` : ""}
+                </div>
+                ${materials ? `<div class="session-links">${materials}</div>` : ""}
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        const foundations = session.foundations || {};
+        const frontier = session.frontier || {};
+
+        const foundMaterials = foundations.materials ? `<a href="https://docs.google.com/search?q=${encodeURIComponent(foundations.materials)}" class="session-link" target="_blank">${foundations.materials}</a>` : "";
+        const frontierMaterials = frontier.materials ? `<a href="https://docs.google.com/search?q=${encodeURIComponent(frontier.materials)}" class="session-link" target="_blank">${frontier.materials}</a>` : "";
+
+        let content = `
+          <div class="time-block">
+            <div class="time-slot">${session.time}</div>
+            <div class="sessions-row">
+        `;
+
+        if (view === "both" || view === "foundations") {
+          content += `
+            <div class="session ${getCategoryClass(session.type)}">
+              <div>
+                <div class="track-label">Foundations</div>
+                <div class="session-category">${session.type.replace(/-/g, " ")}</div>
+                <div class="session-title">${session.title}</div>
+                ${foundations.speaker ? `<div class="session-details"><span class="detail-value">${foundations.speaker}</span></div>` : ""}
+              </div>
+              ${foundMaterials ? `<div class="session-links">${foundMaterials}</div>` : ""}
+            </div>
+          `;
+        }
+
+        if (view === "both" || view === "frontier") {
+          content += `
+            <div class="session ${getCategoryClass(session.type)}">
+              <div>
+                <div class="track-label">Frontier</div>
+                <div class="session-category">${session.type.replace(/-/g, " ")}</div>
+                <div class="session-title">${session.title}</div>
+                ${frontier.speaker ? `<div class="session-details"><span class="detail-value">${frontier.speaker}</span></div>` : ""}
+              </div>
+              ${frontierMaterials ? `<div class="session-links">${frontierMaterials}</div>` : ""}
+            </div>
+          `;
+        }
+
+        content += `</div></div>`;
+        return content;
+      }
+    }
+
+    function renderDay(dayNum, view = "both") {
+      const sessions = dayNum === 1 ? day1Sessions : day2Sessions;
+      const timelineId = dayNum === 1 ? "day1-timeline" : "day2-timeline";
+      const timeline = document.getElementById(timelineId);
+      timeline.innerHTML = sessions.map(s => createSessionHtml(s, view)).join("");
+    }
+
+    // Event listeners
+    document.querySelectorAll(".day-tab").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        document.querySelectorAll(".day-tab").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".day-content").forEach(c => c.classList.remove("active"));
+        e.target.classList.add("active");
+        const dayNum = e.target.dataset.day === "day1" ? 1 : 2;
+        document.querySelector(`[data-day="${dayNum}"]`).classList.add("active");
+        renderDay(dayNum, document.querySelector(".track-option.active").dataset.view);
+      });
+    });
+
+    document.querySelectorAll(".track-option").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        document.querySelectorAll(".track-option").forEach(b => b.classList.remove("active"));
+        e.target.classList.add("active");
+        const view = e.target.dataset.view;
+        const activeDay = document.querySelector(".day-tab.active").dataset.day === "day1" ? 1 : 2;
+        renderDay(activeDay, view);
+      });
+    });
+
+    // Initial render
+    renderDay(1, "both");
+  </script>
+</body>
+</html>
