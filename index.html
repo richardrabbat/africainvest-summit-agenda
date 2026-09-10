@@ -1,684 +1,541 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AfricInvest AI Leadership Summit · Agenda</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cambria:wght@400;700&display=swap">
-  <style>
-    :root {
-      --bg-light: #F8F9FA;
-      --bg-card: #FFFFFF;
-      --text-primary: #0A1828;
-      --text-secondary: #4A5C60;
-      --text-light: #7A8A92;
-      --border: #E0E4E8;
-      --accent-teal: #028090;
-      --accent-orange: #FF8C42;
-      --accent-maroon: #8B3A3A;
-      --accent-blue: #1E40AF;
-      --category-inspiration: #8B3A3A;
-      --category-foundational: #1E40AF;
-      --category-learning: #028090;
-      --category-takeaways: #FF8C42;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AfricInvest AI Leadership Summit · Agenda</title>
+<meta name="description" content="Two-day agenda for the AfricInvest AI Leadership Summit, Tunis, 18 to 19 September 2026, with links to every session's material.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600&display=swap">
+<style>
+  :root {
+    color-scheme: light dark;
+    --ink: #06373F;
+    --teal: #028090;
+    --sea: #00A896;
+    --mint: #02C39A;
+    --amber: #F2A65A;
+    --amberdk: #B26B26;
+    --paper: #F7F9F9;
+    --white: #FFFFFF;
+    --grey: #4A5C60;
+    --lightbar: #DCE3E5;
+    --darkcard: #0E4A53;
+
+    --bg: var(--paper);
+    --card: var(--white);
+    --card-soft: #EEF3F4;
+    --text: var(--ink);
+    --text-2: var(--grey);
+    --text-3: #7C8C90;
+    --line: var(--lightbar);
+    --accent: var(--teal);
+    --accent-ink: #026C79;
+    --chip-bg: #E6F2F3;
+    --break-bg: #F0F4F5;
+
+    --c-insp: var(--amber);
+    --c-insp-text: var(--amberdk);
+    --c-found: var(--teal);
+    --c-found-text: #026C79;
+    --c-peer: var(--mint);
+    --c-peer-text: #027A62;
+    --c-take: var(--ink);
+    --c-take-text: var(--ink);
+    --logo-bg: transparent;
+    --logo-pad: 0;
+
+    --serif: Cambria, "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: Calibri, "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #08262B;
+      --card: #0F383F;
+      --card-soft: #12434B;
+      --text: #EAF2F3;
+      --text-2: #B9CCCF;
+      --text-3: #86A0A4;
+      --line: #1F535B;
+      --accent: #4FC3CF;
+      --accent-ink: #7BD6DF;
+      --chip-bg: #16474F;
+      --break-bg: #0C3036;
+      --c-insp-text: #F5BE83;
+      --c-found: #3FB4C0;
+      --c-found-text: #7BD6DF;
+      --c-peer-text: #5FE0C1;
+      --c-take: #B9CCCF;
+      --c-take-text: #DCE7E9;
+      --logo-bg: #FFFFFF;
+      --logo-pad: 8px 14px;
     }
+  }
+  :root[data-theme="dark"] {
+    --bg: #08262B;
+    --card: #0F383F;
+    --card-soft: #12434B;
+    --text: #EAF2F3;
+    --text-2: #B9CCCF;
+    --text-3: #86A0A4;
+    --line: #1F535B;
+    --accent: #4FC3CF;
+    --accent-ink: #7BD6DF;
+    --chip-bg: #16474F;
+    --break-bg: #0C3036;
+    --c-insp-text: #F5BE83;
+    --c-found: #3FB4C0;
+    --c-found-text: #7BD6DF;
+    --c-peer-text: #5FE0C1;
+    --c-take: #B9CCCF;
+    --c-take-text: #DCE7E9;
+    --logo-bg: #FFFFFF;
+    --logo-pad: 8px 14px;
+  }
 
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --bg-light: #0F1419;
-        --bg-card: #1A2332;
-        --text-primary: #F0F4F8;
-        --text-secondary: #D0D8E0;
-        --text-light: #A0A8B0;
-        --border: #2A3A4A;
-      }
-    }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.45;
+    background: var(--bg);
+    color: var(--text);
+    padding-inline: 16px;
+  }
+  a { color: var(--accent-ink); }
+  button { font: inherit; color: inherit; }
 
-    :root[data-theme="dark"] {
-      --bg-light: #0F1419;
-      --bg-card: #1A2332;
-      --text-primary: #F0F4F8;
-      --text-secondary: #D0D8E0;
-      --text-light: #A0A8B0;
-      --border: #2A3A4A;
-    }
+  /* ---------- Masthead ---------- */
+  .masthead {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding-block: 28px 16px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 22px; min-width: 0; flex-wrap: wrap; }
+  .logo-wrap {
+    display: inline-flex; flex-shrink: 0;
+    background: var(--logo-bg); border-radius: 12px; padding: var(--logo-pad);
+  }
+  .logo { display: block; height: 78px; width: auto; max-width: 100%; }
+  .brand-text { border-left: 2px solid var(--line); padding-left: 22px; min-width: 0; }
+  .kicker {
+    font-size: 12px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--accent-ink); margin-bottom: 2px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3.2vw, 30px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text);
+    text-wrap: balance;
+  }
+  .when { color: var(--text-2); font-size: 14px; margin-top: 3px; }
+  .when b { color: var(--text); font-weight: 600; }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  /* ---------- Controls ---------- */
+  .controls {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    margin-inline: -16px; padding-inline: 16px;
+  }
+  .controls-inner {
+    max-width: 1040px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    padding-block: 10px;
+  }
+  .seg { display: inline-flex; gap: 2px; background: var(--card-soft); border-radius: 9px; padding: 3px; }
+  .seg button {
+    border: 0; background: transparent; cursor: pointer;
+    padding: 7px 14px; border-radius: 7px; font-weight: 500; font-size: 14px; color: var(--text-2);
+    white-space: nowrap;
+  }
+  .seg button[aria-pressed="true"] { background: var(--card); color: var(--text); box-shadow: 0 1px 2px rgba(6,55,63,0.12); font-weight: 600; }
+  .seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .seg.days button { font-family: var(--serif); font-size: 15px; }
+  .seg.days button small { display: block; font-family: var(--sans); font-size: 11px; font-weight: 500; color: var(--text-3); line-height: 1.1; }
+  .seg.days button[aria-pressed="true"] small { color: var(--text-2); }
+  .track-label { font-size: 12px; color: var(--text-3); margin-right: 6px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
+  .filters { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
 
-    body {
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg-light);
-      color: var(--text-primary);
-      line-height: 1.6;
-    }
+  /* ---------- Legend ---------- */
+  .legend {
+    max-width: 1040px; margin: 0 auto; padding-block: 12px 4px;
+    display: flex; gap: 14px 20px; flex-wrap: wrap; font-size: 13px; color: var(--text-2);
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+  .dot.insp { background: var(--c-insp); }
+  .dot.found { background: var(--c-found); }
+  .dot.peer { background: var(--c-peer); }
+  .dot.take { background: var(--c-take); }
 
-    header {
-      background: var(--bg-card);
-      border-bottom: 1px solid var(--border);
-      padding: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+  /* ---------- Timeline ---------- */
+  main { max-width: 1040px; margin: 0 auto; padding-block: 8px 48px; }
+  .day { display: none; }
+  .day.active { display: block; }
+  .day-title {
+    font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--text);
+    padding: 14px 0 8px; display: flex; align-items: baseline; gap: 10px;
+  }
+  .day-title span { font-family: var(--sans); font-size: 13px; color: var(--text-3); font-weight: 500; }
 
-    .logo-section {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      min-width: 0;
-    }
+  .row {
+    display: grid;
+    grid-template-columns: 76px 1fr;
+    gap: 10px;
+    padding-block: 6px;
+    border-top: 1px solid var(--line);
+  }
+  .row:first-of-type { border-top: 0; }
+  .time { padding-top: 10px; font-variant-numeric: tabular-nums; line-height: 1.2; }
+  .time b { display: block; font-weight: 600; font-size: 15px; color: var(--text); }
+  .time small { display: block; font-size: 12px; color: var(--text-3); margin-top: 2px; }
 
-    .logo {
-      width: 60px;
-      height: auto;
-      flex-shrink: 0;
-    }
+  .cards { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .cards.split { grid-template-columns: 1fr 1fr; }
+  .cards.split.solo { grid-template-columns: 1fr; }
 
-    .header-text h1 {
-      font-family: "Cambria", Georgia, serif;
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 0.25rem;
-    }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--line);
+    border-radius: 8px;
+    padding: 9px 12px 9px 12px;
+    display: flex; flex-direction: column; gap: 4px;
+    min-width: 0;
+  }
+  .card.insp { border-left-color: var(--c-insp); }
+  .card.found { border-left-color: var(--c-found); }
+  .card.peer { border-left-color: var(--c-peer); }
+  .card.take { border-left-color: var(--c-take); }
 
-    .header-text p {
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-    }
+  .meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 11.5px; letter-spacing: 0.4px; text-transform: uppercase; font-weight: 600; }
+  .cat.insp { color: var(--c-insp-text); }
+  .cat.found { color: var(--c-found-text); }
+  .cat.peer { color: var(--c-peer-text); }
+  .cat.take { color: var(--c-take-text); }
+  .track {
+    text-transform: none; letter-spacing: 0; font-size: 12px; font-weight: 600;
+    background: var(--chip-bg); color: var(--accent-ink);
+    padding: 1px 8px; border-radius: 999px;
+  }
+  .track.d { background: #FBECD9; color: var(--amberdk); }
+  :root[data-theme="dark"] .track.d { background: #4A3520; color: #F5BE83; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .track.d { background: #4A3520; color: #F5BE83; } }
 
-    .controls {
-      display: flex;
-      gap: 1.5rem;
-      margin-left: auto;
-      align-items: center;
-    }
+  .title { font-family: var(--serif); font-size: 16px; font-weight: 600; line-height: 1.25; color: var(--text); text-wrap: pretty; }
+  .who { font-size: 13.5px; color: var(--text-2); }
+  .who::before { content: "with "; color: var(--text-3); }
+  .note { font-size: 13px; color: var(--text-3); font-style: italic; }
 
-    .day-tabs {
-      display: flex;
-      gap: 0.5rem;
-      background: var(--bg-light);
-      border-radius: 8px;
-      padding: 0.25rem;
-    }
+  .mats { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 3px; }
+  .mat {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; text-decoration: none;
+    color: var(--accent-ink);
+    background: var(--chip-bg);
+    border-radius: 6px; padding: 3px 9px 3px 7px;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .mat:hover { background: var(--card-soft); }
+  .mat:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .mat svg { width: 13px; height: 13px; flex-shrink: 0; }
 
-    .day-tab {
-      padding: 0.5rem 1rem;
-      border: none;
-      background: transparent;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      cursor: pointer;
-      border-radius: 6px;
-      transition: all 0.2s;
-    }
+  .card.break {
+    background: var(--break-bg); border-color: transparent; border-left-color: transparent;
+    flex-direction: row; align-items: center; justify-content: space-between; gap: 10px;
+    padding-block: 7px; color: var(--text-2); font-size: 14px;
+  }
+  .card.break .title { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--text-2); }
+  .card.break .note { font-style: normal; }
+  .row.break { padding-block: 3px; }
+  .row.break .time { padding-top: 7px; }
 
-    .day-tab.active {
-      background: var(--bg-card);
-      color: var(--text-primary);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    }
+  /* ---------- Materials index ---------- */
+  .index { margin-top: 36px; border-top: 2px solid var(--line); padding-top: 18px; }
+  .index h2 { font-family: var(--serif); font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+  .index p { color: var(--text-2); font-size: 14px; margin-bottom: 14px; max-width: 62ch; }
+  .index-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+  .index-grid a {
+    display: flex; align-items: center; gap: 9px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+    padding: 9px 11px; text-decoration: none; color: var(--text); font-size: 14px;
+  }
+  .index-grid a:hover { border-color: var(--accent); }
+  .index-grid a svg { width: 15px; height: 15px; color: var(--accent-ink); flex-shrink: 0; }
+  .index-grid a small { display: block; color: var(--text-3); font-size: 12px; }
 
-    .track-toggle {
-      display: flex;
-      gap: 0.5rem;
-      background: var(--bg-light);
-      border-radius: 8px;
-      padding: 0.25rem;
-    }
+  footer { max-width: 1040px; margin: 0 auto; padding-block: 8px 40px; color: var(--text-3); font-size: 12.5px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 
-    .track-option {
-      padding: 0.5rem 0.875rem;
-      border: none;
-      background: transparent;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      cursor: pointer;
-      border-radius: 6px;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-
-    .track-option.active {
-      background: var(--bg-card);
-      color: var(--text-primary);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-      }
-
-      .controls {
-        width: 100%;
-        margin-left: 0;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .day-tabs,
-      .track-toggle {
-        width: 100%;
-      }
-
-      .day-tab,
-      .track-option {
-        flex: 1;
-        text-align: center;
-      }
-    }
-
-    main {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 1.5rem;
-    }
-
-    .day-content {
-      display: none;
-    }
-
-    .day-content.active {
-      display: block;
-    }
-
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .time-block {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      border-bottom: 1px solid var(--border);
-      min-height: auto;
-      align-items: stretch;
-    }
-
-    .time-slot {
-      padding: 1rem;
-      background: var(--bg-card);
-      border-right: 1px solid var(--border);
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .sessions-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      background: var(--bg-light);
-      padding: 0;
-    }
-
-    .sessions-row.joint {
-      grid-template-columns: 1fr;
-    }
-
-    .session {
-      padding: 1rem;
-      background: var(--bg-card);
-      border-left: 4px solid var(--border);
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: auto;
-    }
-
-    .session:last-child {
-      border-right: none;
-    }
-
-    .session.inspiration {
-      border-left-color: var(--category-inspiration);
-    }
-
-    .session.foundational {
-      border-left-color: var(--category-foundational);
-    }
-
-    .session.learning {
-      border-left-color: var(--category-learning);
-    }
-
-    .session.takeaways {
-      border-left-color: var(--category-takeaways);
-    }
-
-    .session.break {
-      border-left-color: var(--border);
-      background: var(--bg-light);
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 500;
-    }
-
-    .session-category {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.5rem;
-      color: var(--text-light);
-    }
-
-    .session-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      line-height: 1.3;
-      margin-bottom: 0.5rem;
-      text-wrap: balance;
-    }
-
-    .session-details {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      margin-bottom: 0.75rem;
-      font-size: 0.875rem;
-    }
-
-    .detail-label {
-      font-weight: 500;
-      color: var(--text-secondary);
-    }
-
-    .detail-value {
-      color: var(--text-primary);
-    }
-
-    .session-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-top: auto;
-    }
-
-    .session-link {
-      display: inline-block;
-      font-size: 0.875rem;
-      color: var(--accent-teal);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s;
-      word-break: break-word;
-    }
-
-    .session-link:hover {
-      border-bottom-color: var(--accent-teal);
-    }
-
-    .track-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-light);
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .legend {
-      display: flex;
-      gap: 2rem;
-      margin-bottom: 1.5rem;
-      padding: 1rem;
-      background: var(--bg-card);
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.875rem;
-    }
-
-    .legend-swatch {
-      width: 4px;
-      height: 16px;
-      border-radius: 2px;
-    }
-
-    .legend-swatch.inspiration {
-      background: var(--category-inspiration);
-    }
-
-    .legend-swatch.foundational {
-      background: var(--category-foundational);
-    }
-
-    .legend-swatch.learning {
-      background: var(--category-learning);
-    }
-
-    .legend-swatch.takeaways {
-      background: var(--category-takeaways);
-    }
-
-    .content-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 2rem 0;
-    }
-
-    @media (max-width: 768px) {
-      main {
-        padding: 1rem;
-      }
-
-      .time-block {
-        grid-template-columns: 60px 1fr;
-      }
-
-      .time-slot {
-        font-size: 0.75rem;
-        padding: 1rem;
-      }
-
-      .session {
-        padding: 1rem;
-      }
-
-      .session-title {
-        font-size: 0.9rem;
-      }
-
-      .sessions-row {
-        grid-template-columns: 1fr !important;
-      }
-
-      .track-label {
-        display: none;
-      }
-
-      .legend {
-        gap: 1rem;
-      }
-    }
-  </style>
+  /* ---------- Responsive ---------- */
+  @media (max-width: 720px) {
+    .row { grid-template-columns: 58px 1fr; gap: 8px; }
+    .cards.split { gap: 6px; }
+    .cards.split .card { padding: 8px 9px; }
+    .cards.split .title { font-size: 14.5px; }
+    .brand { gap: 14px; }
+    .brand-text { border-left: 0; padding-left: 0; }
+    .logo { height: 60px; }
+    .time b { font-size: 14px; }
+    .controls-inner { justify-content: flex-start; }
+    .seg button { padding: 6px 10px; font-size: 13px; }
+    .track-label { display: none; }
+    .card.break { flex-wrap: wrap; }
+    .card.break .title { white-space: nowrap; }
+  }
+  @media (max-width: 520px) {
+    .cards.split { grid-template-columns: 1fr; }
+    .cards.split .card { padding: 9px 12px; }
+    .cards.split .title { font-size: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo-section">
-      <svg class="logo" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
-        <rect x="50" y="8" width="80" height="5" fill="#8B3A3A" />
-        <rect x="50" y="17" width="80" height="5" fill="#028090" />
-        <rect x="50" y="60" width="80" height="5" fill="#FF8C42" />
-        <text x="20" y="50" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#0A1828">AI</text>
-        <text x="70" y="50" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#0A1828">SUMMIT</text>
-      </svg>
-      <div class="header-text">
-        <h1>Summit Agenda</h1>
-        <p>September 18–19, 2026 · Tunis</p>
+
+<header class="masthead">
+  <div class="brand">
+    <a class="logo-wrap" href="#day1" aria-label="AI Summit home"><img class="logo" src="logo.png" alt="AI Summit" width="833" height="257"></a>
+    <div class="brand-text">
+      <div class="kicker">AfricInvest · Open Startup · Agenda</div>
+      <h1>AI Leadership Summit</h1>
+      <div class="when"><b>Tunis</b> · 18 to 19 September 2026</div>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="seg days" role="tablist" aria-label="Day">
+      <button role="tab" data-day="1" aria-pressed="true">Day 1<small>Thu 18 Sept</small></button>
+      <button role="tab" data-day="2" aria-pressed="false">Day 2<small>Fri 19 Sept</small></button>
+    </div>
+    <div class="filters">
+      <span class="track-label">Track</span>
+      <div class="seg" role="group" aria-label="Track filter">
+        <button data-track="all" aria-pressed="true">Both</button>
+        <button data-track="b" aria-pressed="false">Builder and roadmap</button>
+        <button data-track="d" aria-pressed="false">Debates and Hotseats</button>
       </div>
     </div>
-    <div class="controls">
-      <div class="day-tabs">
-        <button class="day-tab active" data-day="day1">Day 1</button>
-        <button class="day-tab" data-day="day2">Day 2</button>
-      </div>
-      <div class="track-toggle">
-        <button class="track-option active" data-view="both">Both Tracks</button>
-        <button class="track-option" data-view="foundations">Builder & Roadmap</button>
-        <button class="track-option" data-view="frontier">Debates & Hotseats</button>
-      </div>
-    </div>
-  </header>
+  </div>
+</div>
 
-  <main>
-    <div class="legend">
-      <div class="legend-item">
-        <div class="legend-swatch inspiration"></div>
-        <span>Inspiration</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-swatch foundational"></div>
-        <span>Foundational Learning</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-swatch learning"></div>
-        <span>Peer Learning & Problem-Solving</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-swatch takeaways"></div>
-        <span>Takeaways & Roadmaps</span>
-      </div>
-    </div>
+<div class="legend" aria-label="Session types">
+  <span><i class="dot insp"></i>Inspiration</span>
+  <span><i class="dot found"></i>Foundational learning</span>
+  <span><i class="dot peer"></i>Peer learning and problem-solving</span>
+  <span><i class="dot take"></i>Takeaways, strategy and roadmaps</span>
+</div>
 
-    <!-- DAY 1 -->
-    <div class="day-content active" data-day="day1">
-      <div class="timeline" id="day1-timeline">
-        <!-- Sessions populated by JavaScript -->
-      </div>
-    </div>
+<main>
+  <section class="day active" id="day1">
+    <div class="day-title">Day 1 <span>Thursday 18 September · 08:30 to 21:00</span></div>
+    <div class="timeline" id="tl1"></div>
+  </section>
+  <section class="day" id="day2">
+    <div class="day-title">Day 2 <span>Friday 19 September · 09:00 to 21:30</span></div>
+    <div class="timeline" id="tl2"></div>
+  </section>
 
-    <!-- DAY 2 -->
-    <div class="day-content" data-day="day2">
-      <div class="timeline" id="day2-timeline">
-        <!-- Sessions populated by JavaScript -->
-      </div>
-    </div>
-  </main>
+  <section class="index" id="materials">
+    <h2>All material</h2>
+    <p>Every deck, sheet and document used across the two days, in one place. Links open in Google Drive.</p>
+    <div class="index-grid" id="index"></div>
+  </section>
+</main>
 
-  <script>
-    const day1Sessions = [
-      { time: "08:30–08:45", type: "inspiration", title: "Opening — Thank-yous & acknowledgements", speaker: "Khaled", joint: true },
-      { time: "08:45–09:05", type: "inspiration", title: "Opening — Inspirational talk", speaker: "AMI founder (TBC)", joint: true },
-      { time: "09:05–09:20", type: "inspiration", title: "Opening — Who we are & framing", speaker: "Richard", materials: "AfricInvest_Opening_v2", joint: true },
-      { time: "09:20–09:27", type: "inspiration", title: "Opening — Open Startup", speaker: "Houda", joint: true },
-      { time: "09:27–10:00", type: "inspiration", title: "Opening — Team intros (15 teams)", speaker: "Dali", materials: "AfricInvest_Team_Intro_Template", joint: true },
-      { time: "10:00–10:30", type: "break", title: "Coffee / tea break", joint: true },
-      {
-        time: "10:30–11:45",
-        type: "foundational",
-        title: "AI Fundamentals masterclass",
-        foundations: { speaker: "Richard", materials: "AfricInvest_AI_Fundamentals_v3" },
-        frontier: { speaker: "Anthony & JC" },
-        joint: false
-      },
-      { time: "11:45–11:55", type: "foundational", title: "Roadmap prep", foundations: { speaker: "Ghazi & Zack" }, frontier: { speaker: "JC" }, joint: false },
-      { time: "11:55–12:00", type: "foundational", title: "Walk-through of worksheet", foundations: { speaker: "Ghazi & Zack?" }, frontier: { speaker: "JC" }, joint: false },
-      {
-        time: "12:00–12:15",
-        type: "learning",
-        title: "Prioritization exercise",
-        foundations: { speaker: "Richard", materials: "AfricInvest_Prioritization_Exercise" },
-        frontier: { speaker: "Anthony & JC", materials: "AfricInvest_HotSeats_Day1" },
-        joint: false
-      },
-      {
-        time: "12:15–12:35",
-        type: "learning",
-        title: "Team pitches",
-        foundations: { speaker: "Richard" },
-        frontier: { speaker: "Anthony & JC", materials: "AfricInvest_HotSeats_Day1" },
-        joint: false
-      },
-      {
-        time: "12:35–13:00",
-        type: "learning",
-        title: "The agent build",
-        foundations: { speaker: "Ghazi & Zack?", materials: "AfricInvest_Agent_Build_Brief" },
-        frontier: { speaker: "Anthony & JC", materials: "AfricInvest_HotSeats_Day1" },
-        joint: false
-      },
-      { time: "13:00–13:45", type: "break", title: "Lunch", joint: true },
-      {
-        time: "13:45–14:45",
-        type: "learning",
-        title: "Red-team & evals — the Reality Check",
-        foundations: { speaker: "Zack + Ghazi", materials: "AfricInvest_RedTeam_Slides" },
-        frontier: { speaker: "Anthony & JC", materials: "AfricInvest_HotSeats_Day1" },
-        joint: false
-      },
-      { time: "14:45–15:30", type: "learning", title: "Debate 1 — Multi-model architectures", speaker: "Richard + Khaled", materials: "AfricInvest_Debate_1_Single_Vendor", joint: true },
-      { time: "15:30–16:00", type: "inspiration", title: "Inspiration showcase — 3 companies", speaker: "Dali", joint: true },
-      { time: "16:00–16:15", type: "break", title: "Coffee / tea break", joint: true },
-      { time: "16:15–16:45", type: "inspiration", title: "Inspirational talk", speaker: "Jean-Claude", joint: true },
-      { time: "16:45–17:30", type: "learning", title: "Debate 2 — Cost & pricing paradigms", speaker: "Richard + Khaled", materials: "AfricInvest_Debate_2_Outcome_Pricing", joint: true },
-      { time: "17:30–17:45", type: "takeaways", title: "Roadmap walkthrough", speaker: "Richard with Zack", joint: true },
-      { time: "17:45–18:15", type: "takeaways", title: "Roadmap Lab I — first draft", speaker: "OS + AI", joint: true },
-      { time: "18:15–18:30", type: "takeaways", title: "Day-one close", speaker: "Richard or Khaled?", joint: true },
-      { time: "18:30–18:45", type: "break", title: "Satisfaction survey", joint: true },
-      { time: "18:45–19:00", type: "break", title: "Break — reset / freshen up", joint: true },
-      { time: "19:00–21:00", type: "break", title: "Dinner (off-site)", joint: true }
-    ];
+<footer>
+  <span>AfricInvest AI Leadership Summit · Tunis 2026</span>
+  <span>Schedule may shift on the day. Check back for updates.</span>
+</footer>
 
-    const day2Sessions = [
-      { time: "09:00–09:20", type: "takeaways", title: "Reset & day-two promise", speaker: "Richard", joint: true },
-      { time: "09:20–09:35", type: "inspiration", title: "Inspirational talk", speaker: "Kimi / AMI founder (TBC)", joint: true },
-      { time: "09:35–10:25", type: "foundational", title: "Data foundations and data/regulatory", speaker: "Richard & Anthony", materials: "AfricInvest_Scale_Session", joint: true },
-      { time: "10:25–10:55", type: "foundational", title: "Hands-on — what it takes to scale", speaker: "Richard & Anthony", joint: true },
-      { time: "10:55–11:25", type: "break", title: "Coffee / tea break", joint: true },
-      { time: "11:25–12:10", type: "learning", title: "Org and talent discussion", speaker: "Jean-Claude and Khaled", joint: true },
-      {
-        time: "12:10–13:00",
-        type: "takeaways",
-        title: "Roadmap Lab II — deepen & resource",
-        foundations: { speaker: "Ghazi & Zack", materials: "AfricInvest_Day2_AI_Roadmap" },
-        frontier: { speaker: "JC + Anthony", materials: "AfricInvest_HotSeats_Day2" },
-        joint: false
-      },
-      { time: "13:00–13:45", type: "break", title: "Lunch", joint: true },
-      { time: "13:45–14:30", type: "learning", title: "Debate 3 — Open-weight vs. closed-source", speaker: "Anthony & Khaled", materials: "AfricInvest_Debate_3_Open_Weights", joint: true },
-      { time: "14:30–15:25", type: "learning", title: "Hot seats — Foundation companies", speaker: "Dali & Richard", joint: true },
-      { time: "15:25–15:55", type: "break", title: "Coffee / tea break", joint: true },
-      { time: "15:55–16:25", type: "foundational", title: "Tooling landscape & model selection", speaker: "Steve Seow (Microsoft, Zoom)", joint: true },
-      { time: "16:25–17:30", type: "takeaways", title: "Roadmap hot seats & commitment", speaker: "Khaled", joint: true },
-      { time: "17:30–17:50", type: "takeaways", title: "Community & post-summit launch", speaker: "Dali?", joint: true },
-      { time: "17:50–18:10", type: "takeaways", title: "Day 2 & summit close", speaker: "Richard", joint: true },
-      { time: "18:10–18:15", type: "break", title: "Satisfaction survey", joint: true },
-      { time: "18:15–19:15", type: "break", title: "Break / organizers debrief", joint: true },
-      { time: "19:15–19:30", type: "break", title: "Transfer to restaurant", joint: true },
-      { time: "19:30–21:30", type: "break", title: "Dinner", joint: true }
-    ];
+<script>
+  // ---------- Material library (from the Summit material folder) ----------
+  const MAT = {
+    opening:        { n: "Opening slides",                 t: "slides", id: "1hn_nG1oRS73Z2W2yQrwqZExkCho4oNQWJ9qCZbmxtdw" },
+    teamintro:      { n: "Team intro template",            t: "slides", id: "144CWErVGJrCizWbdNYrSmVO_pvJ55EDVsR_4CNQ3adM" },
+    fundamentals:   { n: "AI fundamentals masterclass",    t: "slides", id: "1ZY2-iGIlLL4DBuedtuh_Abdu_VnZV7D8IRuVIPJx_9U" },
+    roadmapbrief:   { n: "Roadmap briefing",               t: "slides", id: "1mgoOWxxGfGzn3kugF3AfpEz5aG0As-7PqEVdi17c8dM" },
+    archbrief:      { n: "Architecture and scale briefing", t: "slides", id: "1-MhCD3ZWqXxapVfUmdjstaI6T7_5wnl5cVc1aY9SXUA" },
+    portfolio:      { n: "Day 1 opportunity portfolio",    t: "sheet",  id: "1hjUkBmCd10utx_n0-yaw4w6d6gf-175_K_ZnOVRtQcc" },
+    archdecisions:  { n: "Architecture and scale decisions", t: "sheet", id: "1G_FNH3N83WGBGrurq2b-9onjmsnYzNFcyhP9uwYcIf4" },
+    prioritization: { n: "Prioritization exercise",        t: "slides", id: "1kdbnNEtB2OvEbp48wgE-ULrEII-EoGAZRo4U114mgcg" },
+    hotseats1:      { n: "Hot seats deck",                 t: "slides", id: "1vV-CY2ow7kB6p536jv6-YAdW9ZNXvf4suvW9woRUvy0" },
+    agentbuild:     { n: "Agent build brief",              t: "slides", id: "1g9EQX63SkmNCthkd9N1Gc__1DWs2POyX5Z-XmWAtQoc" },
+    redteam:        { n: "Red-team and evals slides",      t: "slides", id: "1yJANItw-L0Kxx4Gtrlak56p5np6PKNa-W3W-0z2Gkls" },
+    debate1:        { n: "Debate 1 · Multi-model architectures", t: "slides", id: "160APZH9UHRsBPbkHS2ANHndkl5qUY3tuGe1GL04udyc" },
+    debate2:        { n: "Debate 2 · Cost and pricing",    t: "slides", id: "1X1Sbkkm0Pp7CFnTcCMAE_34w8cxq5Uo4jDRLW3xSsl8" },
+    day1close:      { n: "Day 1 close",                    t: "slides", id: "1rXyn-BAHeCUTPFLI_xtz_IR3oFnXNLxkUmeC0FHLXc4" },
+    scale:          { n: "Data foundations and scale session", t: "slides", id: "1e_PK6F9arIqoYnMAtm4as9zNEuhxX1_ijEB9z0tKBvM" },
+    agentruns:      { n: "Agent runs dataset (50 runs)",   t: "sheet",  id: "1gprsxsQuFXWSRzoWbSUbRwFmL-ZLKsZir4DXyx7y7nI" },
+    orgtalent:      { n: "Org and talent session",         t: "slides", id: "17MCWIvRnwD7MMwdb2VKot3Cti3MsFXul7A9QhIDzcc8" },
+    roadmap2:       { n: "Day 2 AI roadmap",               t: "sheet",  id: "1N3yuPnio6xJt17v4QGUGKh6902zRinGXh0GYW8BABYw" },
+    debate3:        { n: "Debate 3 · Open-weight vs closed-source", t: "slides", id: "1qsDcslkGMQ02cE_6gWP9QzyCrmiVKvDl3KU1IR3JdO0" },
+    hotseats2:      { n: "Roadmap hot seats deck",         t: "slides", id: "1Wf3CELzp5g0Ory6p-NFRjX0hS7dGVGOE1ulcmYU_nws" }
+  };
+  const URLS = {
+    slides: id => `https://docs.google.com/presentation/d/${id}/edit`,
+    sheet:  id => `https://docs.google.com/spreadsheets/d/${id}/edit`,
+    doc:    id => `https://docs.google.com/document/d/${id}/edit`
+  };
+  const ICON = {
+    slides: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="3" width="13" height="9" rx="1.5"/><path d="M6.5 6v3l3-1.5z" fill="currentColor" stroke="none"/></svg>',
+    sheet:  '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="12" height="12" rx="1.5"/><path d="M2 6.5h12M2 10.5h12M7 2v12"/></svg>',
+    doc:    '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M6 8h4M6 11h4"/></svg>'
+  };
+  const CAT = { insp: "Inspiration", found: "Foundational learning", peer: "Peer learning", take: "Takeaways and roadmaps" };
+  const TRACK = { b: "Builder and roadmap", d: "Debates and Hotseats" };
 
-    function getCategoryClass(type) {
-      const map = { inspiration: "inspiration", foundational: "foundational", learning: "learning", takeaways: "takeaways", break: "break" };
-      return map[type] || "break";
+  // ---------- Day 1 ----------
+  const DAY1 = [
+    { s: "08:30", e: "08:45", cat: "insp", title: "Opening: thank-yous and acknowledgements", who: "Khaled" },
+    { s: "08:45", e: "09:05", cat: "insp", title: "Opening: inspirational talk", who: "Guest speaker (TBC)" },
+    { s: "09:05", e: "09:20", cat: "insp", title: "Opening: who we are and framing the two days", who: "Richard", mat: ["opening"] },
+    { s: "09:20", e: "09:27", cat: "insp", title: "Opening: Open Startup", who: "Houda" },
+    { s: "09:27", e: "10:00", cat: "insp", title: "Team intros: 15 teams, 2 minutes each", who: "Dali", mat: ["teamintro"] },
+    { s: "10:00", e: "10:30", brk: true, title: "Coffee break", note: "Tracks split into two rooms after the break" },
+    { s: "10:30", e: "11:45", cat: "found", split: {
+        b: { title: "AI fundamentals masterclass, with 3 hands-on", who: "Richard", mat: ["fundamentals"] },
+        d: { title: "Advanced AI masterclass, with hands-on", who: "Anthony and Jean-Claude" } } },
+    { s: "11:45", e: "11:55", cat: "found", split: {
+        b: { title: "Roadmap prep", who: "Ghazi and Zack", mat: ["roadmapbrief"] },
+        d: { title: "Decisions doc prep", who: "Jean-Claude", mat: ["archbrief"] } } },
+    { s: "11:55", e: "12:00", cat: "found", split: {
+        b: { title: "Walk-through of the worksheet", who: "Ghazi and Zack", mat: ["portfolio"] },
+        d: { title: "Walk-through of the worksheet", who: "Jean-Claude", mat: ["archdecisions"] } } },
+    { s: "12:00", e: "12:15", cat: "peer", split: {
+        b: { title: "Prioritization exercise: understand your strategic pain points", who: "Richard", mat: ["prioritization"] },
+        d: { title: "Hot seats: Debates and Hotseats companies", who: "Anthony and Jean-Claude", mat: ["hotseats1"], note: "About 20 minutes per company, running through to 14:45" } } },
+    { s: "12:15", e: "12:35", cat: "peer", split: {
+        b: { title: "Team pitches: pitch your idea, other teams can join in building it", who: "Richard" },
+        d: { title: "Hot seats continue", who: "Anthony and Jean-Claude" } } },
+    { s: "12:35", e: "13:00", cat: "peer", split: {
+        b: { title: "The agent build", who: "Ghazi and Zack", mat: ["agentbuild"] },
+        d: { title: "Hot seats continue", who: "Anthony and Jean-Claude" } } },
+    { s: "13:00", e: "13:45", brk: true, title: "Lunch" },
+    { s: "13:45", e: "14:45", cat: "peer", split: {
+        b: { title: "Red-team and evals: the Reality Check", who: "Zack and Ghazi", mat: ["redteam"] },
+        d: { title: "Hot seats continue", who: "Anthony and Jean-Claude" } } },
+    { s: "14:45", e: "15:30", cat: "peer", title: "Debate 1: multi-model architectures. Pure-Anthropic strategy vs. mixing multiple models (Oxford style)", who: "Richard and Khaled", mat: ["debate1"], note: "Everyone back in the main room" },
+    { s: "15:30", e: "16:00", cat: "insp", title: "Inspiration showcase: three companies", who: "Dali" },
+    { s: "16:00", e: "16:15", brk: true, title: "Coffee break" },
+    { s: "16:15", e: "16:45", cat: "insp", title: "Inspirational talk", who: "Jean-Claude" },
+    { s: "16:45", e: "17:30", cat: "peer", title: "Debate 2: cost and pricing paradigms. Tokens vs. outcome-based pricing, cost-plus vs. success fees (Oxford style)", who: "Richard and Khaled", mat: ["debate2"] },
+    { s: "17:30", e: "17:45", cat: "take", title: "Roadmap walkthrough (Builder and roadmap) and Decisions doc (Debates and Hotseats)", who: "Richard with Zack", mat: ["portfolio"] },
+    { s: "17:45", e: "18:15", cat: "take", title: "Roadmap Lab I: first draft", who: "Open Startup and AfricInvest coaches", mat: ["portfolio"] },
+    { s: "18:15", e: "18:30", cat: "take", title: "Day one close", who: "Richard and Khaled", mat: ["day1close"] },
+    { s: "18:30", e: "18:45", cat: "take", title: "Satisfaction survey (QR code, about 5 minutes)", who: "Ghazi" },
+    { s: "18:45", e: "19:00", brk: true, title: "Transfer to the off-site dinner", note: "About 15 minutes" },
+    { s: "19:00", e: "21:00", brk: true, title: "Dinner (off-site)" }
+  ];
+
+  // ---------- Day 2 ----------
+  const DAY2 = [
+    { s: "09:00", e: "09:20", cat: "take", title: "Reset and the day-two promise", who: "Richard" },
+    { s: "09:20", e: "09:35", cat: "insp", title: "Inspirational talk", who: "Guest speaker (TBC)" },
+    { s: "09:35", e: "10:25", cat: "found", title: "Data foundations, data and regulatory", who: "Richard and Anthony", mat: ["scale", "agentruns"] },
+    { s: "10:25", e: "10:55", cat: "found", title: "Hands-on: what it takes to scale", who: "Richard and Anthony", mat: ["agentruns"] },
+    { s: "10:55", e: "11:25", brk: true, title: "Coffee break" },
+    { s: "11:25", e: "12:10", cat: "take", title: "Org and talent round table: junior AI-native hires vs. senior architects, build vs. buy, central AI team vs. every team owns its outcomes", who: "Jean-Claude and Khaled", mat: ["orgtalent"] },
+    { s: "12:10", e: "13:00", cat: "take", split: {
+        b: { title: "Roadmap Lab II: deepen and resource", who: "Ghazi and Zack", mat: ["roadmap2"] },
+        d: { title: "Hot seats: Debates and Hotseats companies", who: "Jean-Claude and Anthony" } } },
+    { s: "13:00", e: "13:45", brk: true, title: "Lunch", note: "Everyone back in the main room after lunch" },
+    { s: "13:45", e: "14:30", cat: "peer", title: "Debate 3: open-weight vs. closed-source. Technology and risk, US vs. Chinese models, data residency and compliance", who: "Anthony and Khaled", mat: ["debate3"] },
+    { s: "14:30", e: "15:25", cat: "peer", title: "Hot seats: Builder and roadmap companies", who: "Dali and Richard", mat: ["hotseats1"] },
+    { s: "15:25", e: "15:55", brk: true, title: "Coffee break" },
+    { s: "15:55", e: "16:25", cat: "found", title: "Tooling landscape and model selection", who: "Steve Seow (Microsoft, Seattle), remote" },
+    { s: "16:25", e: "17:30", cat: "take", title: "Roadmap hot seats and commitment. Debaters present their key decisions", who: "Khaled", mat: ["hotseats2"] },
+    { s: "17:30", e: "17:50", cat: "take", title: "Community and post-summit launch. Check-ins at 30, 90 and 180 days", who: "Dali" },
+    { s: "17:50", e: "18:10", cat: "take", title: "Day 2 and summit close", who: "Richard" },
+    { s: "18:10", e: "18:15", cat: "take", title: "Satisfaction survey (QR code)", who: "Ghazi" },
+    { s: "18:15", e: "19:15", brk: true, title: "Break" },
+    { s: "19:15", e: "19:30", brk: true, title: "Transfer to the restaurant" },
+    { s: "19:30", e: "21:30", brk: true, title: "Farewell dinner" }
+  ];
+
+  // ---------- Rendering ----------
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const matLinks = keys => (keys || []).map(k => {
+    const m = MAT[k]; if (!m) return "";
+    return `<a class="mat" href="${URLS[m.t](m.id)}" target="_blank" rel="noopener">${ICON[m.t]}${esc(m.n)}</a>`;
+  }).join("");
+
+  function card(x, cat, track) {
+    return `<div class="card ${cat}">
+      <div class="meta">${track ? `<span class="track ${track}">${TRACK[track]}</span>` : ""}<span class="cat ${cat}">${CAT[cat]}</span></div>
+      <div class="title">${esc(x.title)}</div>
+      ${x.who ? `<div class="who">${esc(x.who)}</div>` : ""}
+      ${x.note ? `<div class="note">${esc(x.note)}</div>` : ""}
+      ${x.mat && x.mat.length ? `<div class="mats">${matLinks(x.mat)}</div>` : ""}
+    </div>`;
+  }
+
+  function row(x, track) {
+    const time = `<div class="time"><b>${x.s}</b><small>to ${x.e}</small></div>`;
+    if (x.brk) {
+      return `<div class="row break">${time}<div class="cards"><div class="card break"><span class="title">${esc(x.title)}</span>${x.note ? `<span class="note">${esc(x.note)}</span>` : ""}</div></div></div>`;
     }
-
-    function createSessionHtml(session, view) {
-      if (session.joint) {
-        const materials = session.materials ? `<a href="https://docs.google.com/search?q=${encodeURIComponent(session.materials)}" class="session-link" target="_blank">${session.materials}</a>` : "";
-        return `
-          <div class="time-block">
-            <div class="time-slot">${session.time}</div>
-            <div class="sessions-row joint">
-              <div class="session ${getCategoryClass(session.type)}">
-                <div>
-                  <div class="session-category">${session.type === "break" ? "Break" : session.type.replace(/-/g, " ")}</div>
-                  <div class="session-title">${session.title}</div>
-                  ${session.speaker ? `<div class="session-details"><span class="detail-value">${session.speaker}</span></div>` : ""}
-                </div>
-                ${materials ? `<div class="session-links">${materials}</div>` : ""}
-              </div>
-            </div>
-          </div>
-        `;
-      } else {
-        const foundations = session.foundations || {};
-        const frontier = session.frontier || {};
-
-        const foundMaterials = foundations.materials ? `<a href="https://docs.google.com/search?q=${encodeURIComponent(foundations.materials)}" class="session-link" target="_blank">${foundations.materials}</a>` : "";
-        const frontierMaterials = frontier.materials ? `<a href="https://docs.google.com/search?q=${encodeURIComponent(frontier.materials)}" class="session-link" target="_blank">${frontier.materials}</a>` : "";
-
-        let content = `
-          <div class="time-block">
-            <div class="time-slot">${session.time}</div>
-            <div class="sessions-row">
-        `;
-
-        if (view === "both" || view === "foundations") {
-          content += `
-            <div class="session ${getCategoryClass(session.type)}">
-              <div>
-                <div class="track-label">Builder and roadmap track</div>
-                <div class="session-category">${session.type.replace(/-/g, " ")}</div>
-                <div class="session-title">${session.title}</div>
-                ${foundations.speaker ? `<div class="session-details"><span class="detail-value">${foundations.speaker}</span></div>` : ""}
-              </div>
-              ${foundMaterials ? `<div class="session-links">${foundMaterials}</div>` : ""}
-            </div>
-          `;
-        }
-
-        if (view === "both" || view === "frontier") {
-          content += `
-            <div class="session ${getCategoryClass(session.type)}">
-              <div>
-                <div class="track-label">Debates and hotseats</div>
-                <div class="session-category">${session.type.replace(/-/g, " ")}</div>
-                <div class="session-title">${session.title}</div>
-                ${frontier.speaker ? `<div class="session-details"><span class="detail-value">${frontier.speaker}</span></div>` : ""}
-              </div>
-              ${frontierMaterials ? `<div class="session-links">${frontierMaterials}</div>` : ""}
-            </div>
-          `;
-        }
-
-        content += `</div></div>`;
-        return content;
-      }
+    if (x.split) {
+      const show = track === "all" ? ["b", "d"] : [track];
+      return `<div class="row">${time}<div class="cards split${show.length === 1 ? " solo" : ""}">${show.map(t => card(x.split[t], x.cat, t)).join("")}</div></div>`;
     }
+    return `<div class="row">${time}<div class="cards">${card(x, x.cat, null)}</div></div>`;
+  }
 
-    function renderDay(dayNum, view = "both") {
-      const sessions = dayNum === 1 ? day1Sessions : day2Sessions;
-      const timelineId = dayNum === 1 ? "day1-timeline" : "day2-timeline";
-      const timeline = document.getElementById(timelineId);
-      timeline.innerHTML = sessions.map(s => createSessionHtml(s, view)).join("");
-    }
+  function render(track) {
+    document.getElementById("tl1").innerHTML = DAY1.map(x => row(x, track)).join("");
+    document.getElementById("tl2").innerHTML = DAY2.map(x => row(x, track)).join("");
+  }
 
-    // Event listeners
-    document.querySelectorAll(".day-tab").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        document.querySelectorAll(".day-tab").forEach(b => b.classList.remove("active"));
-        document.querySelectorAll(".day-content").forEach(c => c.classList.remove("active"));
-        e.target.classList.add("active");
-        const dayStr = e.target.dataset.day; // "day1" or "day2"
-        const dayNum = dayStr === "day1" ? 1 : 2;
-        document.querySelector(`.day-content[data-day="${dayStr}"]`).classList.add("active");
-        renderDay(dayNum, document.querySelector(".track-option.active").dataset.view);
-      });
+  function renderIndex() {
+    const seen = new Set(); const out = [];
+    const walk = (list, dayLabel) => list.forEach(x => {
+      const items = x.split ? [x.split.b, x.split.d] : [x];
+      items.forEach(i => (i.mat || []).forEach(k => {
+        if (seen.has(k)) return; seen.add(k);
+        const m = MAT[k];
+        out.push(`<a href="${URLS[m.t](m.id)}" target="_blank" rel="noopener">${ICON[m.t]}<span>${esc(m.n)}<small>${dayLabel} · ${x.s}</small></span></a>`);
+      }));
     });
+    walk(DAY1, "Day 1"); walk(DAY2, "Day 2");
+    document.getElementById("index").innerHTML = out.join("");
+  }
 
-    document.querySelectorAll(".track-option").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        document.querySelectorAll(".track-option").forEach(b => b.classList.remove("active"));
-        e.target.classList.add("active");
-        const view = e.target.dataset.view;
-        const activeDay = document.querySelector(".day-tab.active").dataset.day === "day1" ? 1 : 2;
-        renderDay(activeDay, view);
-      });
-    });
+  // ---------- State ----------
+  let track = "all";
+  try { track = localStorage.getItem("ai-summit-track") || "all"; } catch (e) {}
+  if (!TRACK[track] && track !== "all") track = "all";
 
-    // Initial render
-    renderDay(1, "both");
-  </script>
+  function setDay(n, push) {
+    document.querySelectorAll(".day").forEach(d => d.classList.toggle("active", d.id === "day" + n));
+    document.querySelectorAll("[data-day]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.day === String(n))));
+    if (push) history.replaceState(null, "", "#day" + n);
+  }
+  function setTrack(t) {
+    track = t;
+    document.querySelectorAll("[data-track]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.track === t)));
+    render(t);
+    try { localStorage.setItem("ai-summit-track", t); } catch (e) {}
+  }
+
+  document.querySelectorAll("[data-day]").forEach(b => b.addEventListener("click", () => setDay(b.dataset.day, true)));
+  document.querySelectorAll("[data-track]").forEach(b => b.addEventListener("click", () => setTrack(b.dataset.track)));
+
+  setTrack(track);
+  renderIndex();
+  setDay(location.hash === "#day2" ? 2 : 1, false);
+  window.addEventListener("hashchange", () => setDay(location.hash === "#day2" ? 2 : 1, false));
+</script>
 </body>
 </html>
