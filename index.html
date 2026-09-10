@@ -407,32 +407,28 @@
     { s: "10:30", e: "11:45", cat: "found", split: {
         b: { title: "AI fundamentals masterclass, with 3 hands-on", who: "Richard", mat: ["fundamentals"] },
         d: { title: "Advanced AI masterclass, with hands-on", who: "Anthony and Jean-Claude" } } },
-    { s: "11:45", e: "11:55", cat: "found", split: {
-        b: { title: "Roadmap prep", who: "Ghazi and Zack", mat: ["roadmapbrief"] },
-        d: { title: "Decisions doc prep", who: "Jean-Claude", mat: ["archbrief"] } } },
-    { s: "11:55", e: "12:00", cat: "found", split: {
-        b: { title: "Walk-through of the worksheet", who: "Ghazi and Zack", mat: ["portfolio"] },
-        d: { title: "Walk-through of the worksheet", who: "Jean-Claude", mat: ["archdecisions"] } } },
-    { s: "12:00", e: "12:15", cat: "peer", split: {
+    { s: "11:45", e: "11:55", cat: "peer", split: {
         b: { title: "Prioritization exercise: understand your strategic pain points", who: "Richard", mat: ["prioritization"] },
-        d: { title: "Hot seats: Debates and Hotseats companies", who: "Anthony and Jean-Claude", mat: ["hotseats1"], note: "About 20 minutes per company, running through to 14:45" } } },
-    { s: "12:15", e: "12:35", cat: "peer", split: {
+        d: { title: "Hot seats: Debates and Hotseats companies", who: "Anthony and Jean-Claude", mat: ["hotseats1"], note: "About 20 minutes per company, running through to 14:30" } } },
+    { s: "11:55", e: "12:10", cat: "peer", split: {
         b: { title: "Team pitches: pitch your idea, other teams can join in building it", who: "Richard" },
         d: { title: "Hot seats continue", who: "Anthony and Jean-Claude" } } },
-    { s: "12:35", e: "13:00", cat: "peer", split: {
+    { s: "12:10", e: "12:45", cat: "peer", split: {
         b: { title: "The agent build", who: "Ghazi and Zack", mat: ["agentbuild"] },
         d: { title: "Hot seats continue", who: "Anthony and Jean-Claude" } } },
-    { s: "13:00", e: "13:45", brk: true, title: "Lunch" },
-    { s: "13:45", e: "14:45", cat: "peer", split: {
+    { s: "12:45", e: "13:30", brk: true, title: "Lunch" },
+    { s: "13:30", e: "14:30", cat: "peer", split: {
         b: { title: "Red-team and evals: the Reality Check", who: "Zack and Ghazi", mat: ["redteam"] },
         d: { title: "Hot seats continue", who: "Anthony and Jean-Claude" } } },
-    { s: "14:45", e: "15:30", cat: "peer", title: "Debate 1: multi-model architectures. Pure-Anthropic strategy vs. mixing multiple models (Oxford style)", who: "Richard and Khaled", mat: ["debate1"], note: "Everyone back in the main room" },
+    { s: "14:30", e: "14:40", cat: "take", title: "Decisions doc prep", who: "Richard", mat: ["archbrief"], note: "Everyone back in the main room" },
+    { s: "14:40", e: "14:45", cat: "take", title: "Walk-through of the worksheet", who: "Richard", mat: ["archdecisions"] },
+    { s: "14:45", e: "15:30", cat: "peer", title: "Debate 1: multi-model architectures. Pure-Anthropic strategy vs. mixing multiple models (Oxford style)", who: "Richard and Khaled", mat: ["debate1"] },
     { s: "15:30", e: "16:00", cat: "insp", title: "Inspiration showcase: three companies", who: "Dali" },
     { s: "16:00", e: "16:15", brk: true, title: "Coffee break" },
     { s: "16:15", e: "16:45", cat: "insp", title: "Inspirational talk", who: "Jean-Claude" },
     { s: "16:45", e: "17:30", cat: "peer", title: "Debate 2: cost and pricing paradigms. Tokens vs. outcome-based pricing, cost-plus vs. success fees (Oxford style)", who: "Richard and Khaled", mat: ["debate2"] },
-    { s: "17:30", e: "17:45", cat: "take", title: "Roadmap walkthrough (Builder and roadmap) and Decisions doc (Debates and Hotseats)", who: "Richard with Zack", mat: ["portfolio"] },
-    { s: "17:45", e: "18:15", cat: "take", title: "Roadmap Lab I: first draft", who: "Open Startup and AfricInvest coaches", mat: ["portfolio"] },
+    { s: "17:30", e: "17:45", cat: "take", title: "Roadmap walkthrough (Builder and roadmap)", who: "Zack and Ghazi", mat: ["roadmapbrief"] },
+    { s: "17:45", e: "18:15", cat: "take", title: "Roadmap Lab I: first draft", who: "AfricInvest and Open Startup coaches", mat: ["portfolio"] },
     { s: "18:15", e: "18:30", cat: "take", title: "Day one close", who: "Richard and Khaled", mat: ["day1close"] },
     { s: "18:30", e: "18:45", cat: "take", title: "Satisfaction survey (QR code, about 5 minutes)", who: "Ghazi" },
     { s: "18:45", e: "19:00", brk: true, title: "Transfer to the off-site dinner", note: "About 15 minutes" },
@@ -448,7 +444,7 @@
     { s: "10:55", e: "11:25", brk: true, title: "Coffee break" },
     { s: "11:25", e: "12:10", cat: "take", title: "Org and talent round table: junior AI-native hires vs. senior architects, build vs. buy, central AI team vs. every team owns its outcomes", who: "Jean-Claude and Khaled", mat: ["orgtalent"] },
     { s: "12:10", e: "13:00", cat: "take", split: {
-        b: { title: "Roadmap Lab II: deepen and resource", who: "Ghazi and Zack", mat: ["roadmap2"] },
+        b: { title: "Roadmap Lab II: deepen and resource", who: "AfricInvest and Open Startup coaches", mat: ["roadmap2"] },
         d: { title: "Hot seats: Debates and Hotseats companies", who: "Jean-Claude and Anthony" } } },
     { s: "13:00", e: "13:45", brk: true, title: "Lunch", note: "Everyone back in the main room after lunch" },
     { s: "13:45", e: "14:30", cat: "peer", title: "Debate 3: open-weight vs. closed-source. Technology and risk, US vs. Chinese models, data residency and compliance", who: "Anthony and Khaled", mat: ["debate3"] },
