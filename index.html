@@ -44,6 +44,7 @@
     --c-take-text: var(--ink);
     --logo-bg: transparent;
     --logo-pad: 0;
+    --summit-teal: #188491;
 
     --serif: Cambria, "Source Serif 4", Georgia, "Times New Roman", serif;
     --sans: Calibri, "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
@@ -70,6 +71,7 @@
       --c-take-text: #DCE7E9;
       --logo-bg: #FFFFFF;
       --logo-pad: 8px 14px;
+      --summit-teal: #2FB6BE;
     }
   }
   :root[data-theme="dark"] {
@@ -92,6 +94,7 @@
     --c-take-text: #DCE7E9;
     --logo-bg: #FFFFFF;
     --logo-pad: 8px 14px;
+    --summit-teal: #2FB6BE;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -274,10 +277,71 @@
   .index-grid a svg { width: 15px; height: 15px; color: var(--accent-ink); flex-shrink: 0; }
   .index-grid a small { display: block; color: var(--text-3); font-size: 12px; }
 
+  /* ---------- Top nav ---------- */
+  .topnav { display: flex; gap: 4px 22px; flex-wrap: wrap; align-items: center; font-size: 15px; font-weight: 500; }
+  .topnav button {
+    appearance: none; -webkit-appearance: none; background: transparent; border: 0; border-radius: 0; box-shadow: none;
+    font: inherit; color: var(--text-2); cursor: pointer; padding: 6px 0 5px; position: relative;
+  }
+  .topnav button::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; border-radius: 2px;
+    background: var(--summit-teal); transform: scaleX(0); transform-origin: left; transition: transform 0.18s ease;
+  }
+  .topnav button:hover { color: var(--text); }
+  .topnav button:hover::after { transform: scaleX(1); opacity: 0.45; }
+  .topnav button[aria-current="page"] { color: var(--text); font-weight: 600; }
+  .topnav button[aria-current="page"]::after { transform: scaleX(1); opacity: 1; }
+  .view { display: none; }
+  .view.active { display: block; }
+  .controls.hidden { display: none; }
+  .topnav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* ---------- People ---------- */
+  .people, .partners { padding-top: 18px; }
+  .people h2, .partners h2 { font-family: var(--serif); font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+  .people p { color: var(--text-2); font-size: 14px; margin-bottom: 14px; max-width: 62ch; }
+  .group { margin-bottom: 18px; }
+  .group h3 { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 8px; }
+  .group h3 span { font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--text-3); }
+  .group-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 12px; }
+  .person {
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; min-width: 0;
+    display: flex; flex-direction: column;
+  }
+  .portrait {
+    aspect-ratio: 1 / 1; width: 100%; position: relative; overflow: hidden;
+    background: linear-gradient(160deg, var(--chip-bg), var(--card-soft));
+    display: grid; place-items: center;
+  }
+  .portrait::before {
+    content: attr(data-initials); font-family: var(--serif); font-weight: 700; font-size: 40px; letter-spacing: 1px;
+    color: var(--accent-ink); opacity: 0.55;
+  }
+  .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .person b { display: block; font-family: var(--serif); font-size: 16px; font-weight: 600; color: var(--text); line-height: 1.25; padding: 10px 12px 0; }
+  .person span { display: block; font-size: 13px; color: var(--text-2); line-height: 1.3; padding: 3px 12px 11px; }
+
+  /* ---------- Partners ---------- */
+  .logo-row { display: grid; grid-template-columns: 150px 1fr; gap: 10px 16px; align-items: center; padding-block: 12px; border-top: 1px solid var(--line); }
+  .logo-row:first-of-type { border-top: 0; }
+  .logo-label { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text-3); }
+  .logo-strip { display: flex; flex-wrap: wrap; gap: 10px; }
+  .logo-card {
+    display: flex; align-items: center; justify-content: center;
+    width: 190px; height: 82px; padding: 12px 18px;
+    background: #FFFFFF; border: 1px solid var(--line); border-radius: 8px;
+  }
+  .logo-card img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+  .logo-card:hover { border-color: var(--accent); }
+
   footer { max-width: 1040px; margin: 0 auto; padding-block: 8px 40px; color: var(--text-3); font-size: 12.5px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 
   /* ---------- Responsive ---------- */
   @media (max-width: 720px) {
+    .topnav { width: 100%; }
+    .logo-row { grid-template-columns: 1fr; gap: 8px; }
+    .logo-card { width: calc(50% - 5px); height: 70px; }
+    .group-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .row { grid-template-columns: 58px 1fr; gap: 8px; }
     .cards.split { gap: 6px; }
     .cards.split .card { padding: 8px 9px; }
@@ -311,6 +375,11 @@
       <div class="when"><b>Tunis</b> · 18 to 19 September 2026</div>
     </div>
   </div>
+  <nav class="topnav" aria-label="Page sections">
+    <button type="button" data-view-link="agenda" aria-current="page">Agenda</button>
+    <button type="button" data-view-link="people">Team</button>
+    <button type="button" data-view-link="partners">Partners</button>
+  </nav>
 </header>
 
 <div class="controls">
@@ -330,14 +399,17 @@
   </div>
 </div>
 
+<div class="view" data-view="agenda">
 <div class="legend" aria-label="Session types">
   <span><i class="dot insp"></i>Inspiration</span>
   <span><i class="dot found"></i>Foundational learning</span>
   <span><i class="dot peer"></i>Peer learning and problem-solving</span>
   <span><i class="dot take"></i>Takeaways, strategy and roadmaps</span>
 </div>
+</div>
 
 <main>
+<div class="view" data-view="agenda">
   <section class="day active" id="day1">
     <div class="day-title">Day 1 <span>Thursday 18 September · 08:30 to 21:00</span></div>
     <div class="timeline" id="tl1"></div>
@@ -351,6 +423,33 @@
     <h2>All material</h2>
     <p>Every deck, sheet and document used across the two days, in one place. Links open in Google Drive.</p>
     <div class="index-grid" id="index"></div>
+  </section>
+</div>
+
+
+  <section class="people view" data-view="people" id="people">
+    <h2>Team</h2>
+    <div id="people-groups"></div>
+  </section>
+
+  <section class="partners view" data-view="partners" id="partners">
+    <h2>Partners</h2>
+    <div class="logo-row">
+      <div class="logo-label">Organised by</div>
+      <div class="logo-strip">
+        <a class="logo-card" href="https://www.africinvest.com" target="_blank" rel="noopener"><img src="logos/africinvest.png" alt="AfricInvest"></a>
+        <a class="logo-card" href="https://www.openstartup.tn" target="_blank" rel="noopener"><img src="logos/openstartup.png" alt="Open Startup"></a>
+        <a class="logo-card" href="https://lighty.ai" target="_blank" rel="noopener"><img src="logos/lighty.png" alt="Lighty AI"></a>
+      </div>
+    </div>
+    <div class="logo-row">
+      <div class="logo-label">With the support of</div>
+      <div class="logo-strip">
+        <a class="logo-card" href="https://www.kfw.de" target="_blank" rel="noopener"><img src="logos/kfw.png" alt="KfW"></a>
+        <a class="logo-card" href="https://www.norfund.no" target="_blank" rel="noopener"><img src="logos/norfund.png" alt="Norfund"></a>
+        <a class="logo-card" href="https://www.fmo.nl" target="_blank" rel="noopener"><img src="logos/fmo.png" alt="FMO, Entrepreneurial Development Bank"></a>
+      </div>
+    </div>
   </section>
 </main>
 
@@ -460,6 +559,23 @@
     { s: "19:30", e: "21:30", brk: true, title: "Farewell dinner" }
   ];
 
+  // ---------- Team (photos: square JPGs in people/, named as below; a missing file falls back to initials) ----------
+  const PEOPLE = [
+    { group: "AfricInvest", note: "Convening the cohort", members: [
+      { name: "Khaled Ben Jilani", role: "Senior Partner", photo: "people/khaled-ben-jilani.jpg" },
+      { name: "Dali Lakhoua", role: "VC Investment Officer, Director", photo: "people/dali-lakhoua.jpg" },
+      { name: "Marième Niang", role: "Private Equity Analyst", photo: "people/marieme-niang.jpg" } ] },
+    { group: "Experts", note: "Teaching and moderating", members: [
+      { name: "Richard Rabbat", role: "CEO, Lighty AI", photo: "people/richard-rabbat.jpg" },
+      { name: "Anthony Johnson", role: "CTO, Lighty AI", photo: "people/anthony-johnson.jpg" },
+      { name: "Jean-Claude Saghbini", role: "President, Lumeris Technology Solutions", photo: "people/jean-claude-saghbini.jpg" } ] },
+    { group: "Open Startup", note: "Hosting and facilitating", members: [
+      { name: "Houda Ghozzi, PhD", role: "Founder and CEO", photo: "people/houda-ghozzi.jpg" },
+      { name: "Zack Temtem", role: "COO", photo: "people/zack-temtem.jpg" },
+      { name: "Farah Boughanmi", role: "Strategic Project Coordinator", photo: "people/farah-boughanmi.jpg" },
+      { name: "Ghazi Dhouib", role: "Scale-Up Manager", photo: "people/ghazi-dhouib.jpg" } ] }
+  ];
+
   // ---------- Rendering ----------
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const matLinks = keys => (keys || []).map(k => {
@@ -494,6 +610,19 @@
     document.getElementById("tl2").innerHTML = DAY2.map(x => row(x, track)).join("");
   }
 
+  function renderPeople() {
+    const initials = n => n.replace(/,.*$/, "").split(/\s+/).filter(Boolean).map(w => w[0]).slice(0, 2).join("");
+    document.getElementById("people-groups").innerHTML = PEOPLE.map(g => `
+      <div class="group">
+        <h3>${esc(g.group)}${g.note ? ` <span>· ${esc(g.note)}</span>` : ""}</h3>
+        <div class="group-grid">${g.members.map(m => `
+          <div class="person">
+            <div class="portrait" data-initials="${esc(initials(m.name))}">${m.photo ? `<img src="${esc(m.photo)}" alt="${esc(m.name)}" loading="lazy" onerror="this.remove()">` : ""}</div>
+            <b>${esc(m.name)}</b><span>${esc(m.role)}</span>
+          </div>`).join("")}</div>
+      </div>`).join("");
+  }
+
   function renderIndex() {
     const seen = new Set(); const out = [];
     const walk = (list, dayLabel) => list.forEach(x => {
@@ -516,7 +645,7 @@
   function setDay(n, push) {
     document.querySelectorAll(".day").forEach(d => d.classList.toggle("active", d.id === "day" + n));
     document.querySelectorAll("[data-day]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.day === String(n))));
-    if (push) history.replaceState(null, "", "#day" + n);
+    if (push) setHash("#day" + n);
   }
   function setTrack(t) {
     track = t;
@@ -526,12 +655,40 @@
   }
 
   document.querySelectorAll("[data-day]").forEach(b => b.addEventListener("click", () => setDay(b.dataset.day, true)));
-  document.querySelectorAll("[data-track]").forEach(b => b.addEventListener("click", () => setTrack(b.dataset.track)));
+
+  // Views: Agenda (default), Material, People, Partners
+  const VIEWS = ["agenda", "people", "partners"];
+  const TOP = (() => { try { return window.top === window; } catch (err) { return false; } })();
+  function setHash(h) { if (!TOP) return; try { history.replaceState(null, "", h); } catch (err) {} }
+  function setView(name, push) {
+    if (!VIEWS.includes(name)) name = "agenda";
+    document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.dataset.view === name));
+    document.querySelectorAll("[data-view-link]").forEach(a => {
+      if (a.dataset.viewLink === name) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
+    document.querySelector(".controls").classList.toggle("hidden", name !== "agenda");
+    if (push) setHash(name === "agenda" ? "#day" + currentDay() : "#" + name);
+    window.scrollTo({ top: 0 });
+  }
+  function currentDay() { return document.querySelector(".day-tab[aria-pressed='true'], [data-day][aria-pressed='true']").dataset.day; }
+  function route() {
+    const h = (location.hash || "#day1").slice(1);
+    if (h === "day1" || h === "day2") { setView("agenda", false); setDay(h === "day2" ? 2 : 1, false); }
+    else if (h === "materials") { setView("agenda", false); const el = document.getElementById("materials"); if (el) el.scrollIntoView(); }
+    else setView(h, false);
+  }
+  document.querySelectorAll("[data-view-link]").forEach(a => a.addEventListener("click", e => {
+    e.preventDefault();
+    const v = a.dataset.viewLink;
+    if (v === "agenda") { setView("agenda", false); setHash("#day" + currentDay()); }
+    else setView(v, true);
+  }));
 
   setTrack(track);
   renderIndex();
-  setDay(location.hash === "#day2" ? 2 : 1, false);
-  window.addEventListener("hashchange", () => setDay(location.hash === "#day2" ? 2 : 1, false));
+  renderPeople();
+  route();
+  window.addEventListener("hashchange", route);
 </script>
 </body>
 </html>
