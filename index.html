@@ -562,18 +562,18 @@
   // ---------- Team (photos: square JPGs in people/, named as below; a missing file falls back to initials) ----------
   const PEOPLE = [
     { group: "AfricInvest", note: "Convening the cohort", members: [
-      { name: "Khaled Ben Jilani", role: "Senior Partner", photo: "people/khaled-ben-jilani.jpg" },
-      { name: "Dali Lakhoua", role: "VC Investment Officer, Director", photo: "people/dali-lakhoua.jpg" },
-      { name: "Marième Niang", role: "Private Equity Analyst", photo: "people/marieme-niang.jpg" } ] },
+      { name: "Khaled Ben Jilani", role: "Senior Partner", photo: "people/khaled-ben-jilani.png" },
+      { name: "Dali Lakhoua", role: "VC Investment Officer, Director", photo: "people/dali-lakhoua.png" },
+      { name: "Marième Niang", role: "Private Equity Analyst", photo: "people/marieme-niang.png" } ] },
     { group: "Experts", note: "Teaching and moderating", members: [
-      { name: "Richard Rabbat", role: "CEO, Lighty AI", photo: "people/richard-rabbat.jpg" },
-      { name: "Anthony Johnson", role: "CTO, Lighty AI", photo: "people/anthony-johnson.jpg" },
-      { name: "Jean-Claude Saghbini", role: "President, Lumeris Technology Solutions", photo: "people/jean-claude-saghbini.jpg" } ] },
+      { name: "Richard Rabbat", role: "CEO, Lighty AI", photo: "people/richard-rabbat.png" },
+      { name: "Anthony Johnson", role: "CTO, Lighty AI", photo: "people/anthony-johnson.png" },
+      { name: "Jean-Claude Saghbini", role: "President, Lumeris Technology Solutions", photo: "people/jean-claude-saghbini.png" } ] },
     { group: "Open Startup", note: "Hosting and facilitating", members: [
-      { name: "Houda Ghozzi, PhD", role: "Founder and CEO", photo: "people/houda-ghozzi.jpg" },
-      { name: "Zack Temtem", role: "COO", photo: "people/zack-temtem.jpg" },
-      { name: "Farah Boughanmi", role: "Strategic Project Coordinator", photo: "people/farah-boughanmi.jpg" },
-      { name: "Ghazi Dhouib", role: "Scale-Up Manager", photo: "people/ghazi-dhouib.jpg" } ] }
+      { name: "Houda Ghozzi, PhD", role: "Founder and CEO", photo: "people/houda-ghozzi.png" },
+      { name: "Zack Temtem", role: "COO", photo: "people/zack-temtem.png" },
+      { name: "Farah Boughanmi", role: "Strategic Project Coordinator", photo: "people/farah-boughanmi.png" },
+      { name: "Ghazi Dhouib", role: "Scale-Up Manager", photo: "people/ghazi-dhouib.png" } ] }
   ];
 
   // ---------- Rendering ----------
@@ -655,6 +655,7 @@
   }
 
   document.querySelectorAll("[data-day]").forEach(b => b.addEventListener("click", () => setDay(b.dataset.day, true)));
+  document.querySelectorAll("[data-track]").forEach(b => b.addEventListener("click", () => setTrack(b.dataset.track)));
 
   // Views: Agenda (default), Material, People, Partners
   const VIEWS = ["agenda", "people", "partners"];
