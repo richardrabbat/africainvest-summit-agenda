@@ -334,6 +334,50 @@
   .logo-card img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
   .logo-card:hover { border-color: var(--accent); }
 
+  /* ---------- Logistics ---------- */
+  .logistics { padding-top: 18px; }
+  .logistics h2 { font-family: var(--serif); font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+  .logistics .lede { color: var(--text-2); font-size: 15px; max-width: 62ch; margin-bottom: 22px; }
+  .lg-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 40px; align-items: start; }
+  .lg-section { margin-bottom: 22px; min-width: 0; }
+  .lg-section.wide { grid-column: 1 / -1; }
+  .lg-section h3 { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 8px; }
+  .lg-section h4 { font-family: var(--serif); font-size: 16px; font-weight: 600; margin: 10px 0 4px; }
+  .lg-section p { max-width: 62ch; margin-bottom: 8px; }
+  .lg-section ul { padding-left: 18px; max-width: 62ch; margin-bottom: 8px; }
+  .lg-section li { margin-bottom: 4px; }
+  .lg-section li::marker { color: var(--accent); }
+  .btn-link {
+    display: inline-flex; align-items: center; gap: 8px; margin: 4px 8px 6px 0;
+    background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+    padding: 8px 12px; text-decoration: none; color: var(--text); font-size: 14px; font-weight: 500;
+  }
+  .btn-link:hover { border-color: var(--accent); }
+  .btn-link svg { width: 15px; height: 15px; color: var(--accent-ink); flex-shrink: 0; }
+  .btn-link.primary { background: var(--summit-teal); border-color: var(--summit-teal); color: #FFFFFF; }
+  .btn-link.primary svg { color: #FFFFFF; }
+  .btn-link.primary:hover { filter: brightness(1.08); }
+  .lg-section button.inline-link { background: none; border: 0; padding: 0; color: var(--accent-ink); text-decoration: underline; cursor: pointer; font: inherit; }
+  .sched { list-style: none; padding: 0; margin: 0 0 8px; max-width: none; }
+  .sched li { display: grid; grid-template-columns: 170px 1fr; gap: 6px 16px; padding-block: 9px; border-top: 1px solid var(--line); margin: 0; }
+  .sched li:first-child { border-top: 0; padding-top: 0; }
+  .sched b { font-family: var(--serif); font-weight: 600; }
+  .sched span { color: var(--text-2); }
+  .sched small { display: block; color: var(--text-3); font-size: 13px; }
+  .facts { display: grid; grid-template-columns: 150px 1fr; gap: 0 16px; }
+  .facts dt { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text-3); padding-top: 11px; }
+  .facts dd { padding-block: 9px; border-top: 1px solid var(--line); max-width: 62ch; }
+  .facts dt:first-of-type, .facts dd:first-of-type { border-top: 0; padding-top: 0; }
+  .facts dd p { margin-bottom: 3px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { display: inline-flex; align-items: center; gap: 7px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px 6px 10px; font-size: 14px; }
+  .chip b { font-family: var(--serif); font-size: 16px; color: var(--accent-ink); }
+  .contacts { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+  .contact { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .contact b { display: block; font-family: var(--serif); font-size: 16px; font-weight: 600; }
+  .contact span { display: block; color: var(--text-2); font-size: 13px; margin-bottom: 8px; }
+  .contact a { font-size: 14px; }
+
   /* ---------- Sponsor strip (agenda view) ---------- */
   .sponsors { margin-top: 40px; padding-top: 22px; border-top: 2px solid var(--line); text-align: center; }
   .sponsors-label { font-size: 12px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--text-3); margin-bottom: 14px; }
@@ -346,6 +390,12 @@
   @media (max-width: 720px) {
     .topnav { width: 100%; }
     .logo-row { grid-template-columns: 1fr; gap: 8px; }
+    .lg-grid { grid-template-columns: 1fr; gap: 0; }
+    .sched li { grid-template-columns: 1fr; gap: 2px; }
+    .facts { grid-template-columns: 1fr; }
+    .facts dt { padding-top: 10px; border-top: 1px solid var(--line); }
+    .facts dd { border-top: 0; padding-top: 2px; }
+    .facts dt:first-of-type { border-top: 0; padding-top: 0; }
     .logo-card { width: calc(50% - 5px); height: 70px; }
     .sponsors-strip .logo-card { width: calc(50% - 6px); height: 72px; }
     .group-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -377,13 +427,14 @@
   <div class="brand">
     <a class="logo-wrap" href="#day1" aria-label="AI Summit home"><img class="logo" src="logo.png" alt="AI Summit" width="833" height="257"></a>
     <div class="brand-text">
-      <div class="kicker">AfricInvest · Open Startup · Agenda</div>
+      <div class="kicker">AfricInvest · Open Startup · Lighty</div>
       <h1>AI Leadership Summit</h1>
       <div class="when"><b>Tunis</b> · 18 to 19 September 2026</div>
     </div>
   </div>
   <nav class="topnav" aria-label="Page sections">
     <button type="button" data-view-link="agenda" aria-current="page">Agenda</button>
+    <button type="button" data-view-link="logistics">Logistics</button>
     <button type="button" data-view-link="people">Team</button>
     <button type="button" data-view-link="partners">Partners</button>
   </nav>
@@ -442,6 +493,110 @@
   </section>
 </div>
 
+
+  <section class="logistics view" data-view="logistics" id="logistics">
+    <h2>Logistics</h2>
+    <p class="lede">Welcome to the AfricInvest AI Summit. Everything you need for the trip is here: arrival, hotel, the four-day outline, who to call and what to pack.</p>
+
+    <div class="lg-grid">
+      <div class="lg-section">
+        <h3>Accommodation</h3>
+        <p>Your room is booked at The Residence Tunis. A separate email carries your hotel confirmation voucher.</p>
+        <ul>
+          <li>Check-in from 15:00</li>
+          <li>Check-out by 12:00</li>
+          <li>Three nights are covered: check-in on the 17th, check-out on the 20th. Extra nights are at your own expense</li>
+        </ul>
+        <a class="btn-link" href="https://maps.app.goo.gl/WoFCp5ue7CCE9teb9" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>The Residence Tunis on the map</a>
+      </div>
+
+      <div class="lg-section">
+        <h3>Airport transfers</h3>
+        <h4>Arrival</h4>
+        <ul>
+          <li>Land at Tunis Carthage International Airport (TUN) as per your flight</li>
+          <li>The Open Startup team waits in the arrivals hall, in front of the Ooredoo desk, holding AI Summit signage</li>
+          <li>A dedicated car takes you to the hotel, about 30 minutes depending on traffic</li>
+        </ul>
+        <h4>Departure</h4>
+        <ul>
+          <li>Leave the hotel 3 hours before your flight; please check out on time</li>
+          <li>A dedicated car takes you to the airport. If your travel plans change, tell us as early as you can so we can update the arrangements</li>
+        </ul>
+        <h3 style="margin-top: 22px;">Summit WhatsApp group</h3>
+        <p>Important updates, announcements and last-minute logistics go out on a dedicated WhatsApp group. Please join before you travel.</p>
+        <a class="btn-link primary" href="https://chat.whatsapp.com/FAQ75GYw68XIiUDQgNnakd" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l1.9-4.9A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>Join the AI Summit WhatsApp group</a>
+      </div>
+
+      <div class="lg-section wide">
+        <h3>Programme and venue</h3>
+        <p>The sessions take place over two days at the conference facilities of The Residence Tunis. Transport between all official venues is provided throughout the summit.</p>
+        <ul class="sched">
+          <li><b>Thursday 17 September</b><span>Guest arrivals as per individual flights<small>Welcome cocktail at 18:00</small></span></li>
+          <li><b>Friday 18 September</b><span>Summit sessions from 08:30 at The Residence conference facilities<small>Morning and afternoon coffee breaks, lunch on site · Dinner in the evening, venue to be confirmed</small></span></li>
+          <li><b>Saturday 19 September</b><span>Summit sessions from 09:00 at The Residence conference facilities<small>Morning and afternoon coffee breaks, lunch on site · Dinner in the evening, venue to be confirmed</small></span></li>
+          <li><b>Sunday 20 September</b><span>Guest departures</span></li>
+        </ul>
+        <p>The full two-day programme is on the <button type="button" class="inline-link" data-view-link="agenda">Agenda</button> page, and you can add every session to your own calendar.</p>
+        <a class="btn-link" href="https://calendar.google.com/calendar/u/0?cid=Y19mZmFkYjc4ZjMzNWZlNjZlNjQyZTA3MmFmYmFiYzFjYzU0ZTcwZTFlMGJhMWVjZjc5ZjFlYWM3MmEzNjg2NzQxQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Add the sessions to your calendar</a>
+      </div>
+
+
+      <div class="lg-section">
+        <h3>Good to know</h3>
+        <dl class="facts">
+          <dt>Weather</dt>
+          <dd><p>Mediterranean climate: warm days of 27 to 35°C (81 to 95°F) and cooler evenings around 19 to 22°C (66 to 72°F).</p><p>Light clothing, plus a light jacket or blazer for air-conditioned rooms. Showers are possible, so a small umbrella is worth packing.</p></dd>
+          <dt>Time zone</dt>
+          <dd>Central European Time, GMT+1, no daylight saving.</dd>
+          <dt>Electricity</dt>
+          <dd>230 V, 50 Hz, plug types C and E (European two-pin round). Bring a travel adapter if your devices use a different plug.</dd>
+          <dt>Currency</dt>
+          <dd><p>Tunisian Dinar (TND), a closed currency that cannot be exchanged before arrival.</p><p>ATMs are widely available in Tunis and take international cards. Major credit cards work in hotels and larger establishments; carry some cash for smaller vendors and taxis.</p></dd>
+          <dt>Dress code</dt>
+          <dd>Casual attire.</dd>
+        </dl>
+      </div>
+
+      <div class="lg-section">
+        <h3>Helpful apps in Tunisia</h3>
+        <dl class="facts">
+          <dt>Transport</dt>
+          <dd>inDrive, Yassir</dd>
+          <dt>Food delivery</dt>
+          <dd>Glovo, Yassir Food</dd>
+        </dl>
+
+        <h3 style="margin-top: 22px;">Emergency numbers</h3>
+        <div class="chips">
+          <span class="chip"><b>197</b>Police</span>
+          <span class="chip"><b>190</b>Ambulance (SAMU)</span>
+          <span class="chip"><b>198</b>Fire brigade</span>
+          <span class="chip"><b>193</b>National Guard</span>
+        </div>
+
+        <h3 style="margin-top: 22px;">Coverage and expenses</h3>
+        <ul>
+          <li><strong>Accommodation</strong> is covered for three nights, check-in on the 17th and check-out on the 20th. Additional nights are at your own expense</li>
+          <li><strong>Meals and soft drinks</strong> that are part of the official programme are covered. Anything ordered outside the scheduled summit meals, including alcoholic drinks, and any personal expenses or activities outside the programme, are at your own expense</li>
+        </ul>
+      </div>
+
+      <div class="lg-section wide">
+        <h3>Who to contact</h3>
+        <div class="contacts">
+          <div class="contact"><b>Dali Lakhoua</b><span>Content and programme · AfricInvest</span><a href="https://wa.me/33629971166" target="_blank" rel="noopener">WhatsApp +33 6 29 97 11 66</a></div>
+          <div class="contact"><b>Sarrah Ben Hamza</b><span>Logistics · Open Startup</span><a href="https://wa.me/21628484235" target="_blank" rel="noopener">WhatsApp +216 28 48 42 35</a></div>
+        </div>
+      </div>
+
+      <div class="lg-section wide">
+        <h3>Photography and video</h3>
+        <p>Photographs and videos may be taken during the summit. The organisers may use them for communication and promotion, including on social media, websites, publications and reports about the summit.</p>
+        <p>If you would rather not be photographed or filmed, or do not want your image used in any material, email <a href="mailto:dali.lakhoua@africinvest.com">dali.lakhoua@africinvest.com</a> before the summit and we will make every reasonable effort to respect your preference.</p>
+      </div>
+    </div>
+  </section>
 
   <section class="people view" data-view="people" id="people">
     <h2>Team</h2>
@@ -675,8 +830,8 @@
   document.querySelectorAll("[data-day]").forEach(b => b.addEventListener("click", () => setDay(b.dataset.day, true)));
   document.querySelectorAll("[data-track]").forEach(b => b.addEventListener("click", () => setTrack(b.dataset.track)));
 
-  // Views: Agenda (default), Material, People, Partners
-  const VIEWS = ["agenda", "people", "partners"];
+  // Views: Agenda (default), Logistics, Team, Partners
+  const VIEWS = ["agenda", "logistics", "people", "partners"];
   const TOP = (() => { try { return window.top === window; } catch (err) { return false; } })();
   function setHash(h) { if (!TOP) return; try { history.replaceState(null, "", h); } catch (err) {} }
   function setView(name, push) {
