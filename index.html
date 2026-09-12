@@ -337,14 +337,26 @@
   /* ---------- Logistics ---------- */
   .logistics { padding-top: 18px; }
   .logistics h2 { font-family: var(--serif); font-size: 20px; font-weight: 600; margin-bottom: 4px; }
-  .logistics .lede { color: var(--text-2); font-size: 15px; max-width: 62ch; margin-bottom: 22px; }
-  .lg-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 40px; align-items: start; }
+  .logistics .lede { color: var(--text-2); font-size: 15px; max-width: 74ch; margin-bottom: 14px; }
+  .lg-nav {
+    position: sticky; top: 0; z-index: 15; background: var(--bg);
+    display: flex; flex-wrap: wrap; gap: 4px 6px; padding-block: 8px 10px; margin-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .lg-nav button {
+    appearance: none; -webkit-appearance: none; border: 1px solid transparent; background: transparent; border-radius: 999px;
+    padding: 5px 11px; font: inherit; font-size: 13.5px; font-weight: 500; color: var(--text-2); cursor: pointer; white-space: nowrap;
+  }
+  .lg-nav button:hover { color: var(--text); border-color: var(--line); }
+  .lg-nav button[aria-current="true"] { background: var(--chip-bg); color: var(--accent-ink); font-weight: 600; }
+  .lg-nav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .lg-section { scroll-margin-top: 64px; }
+  .lg-grid { max-width: 86ch; }
   .lg-section { margin-bottom: 22px; min-width: 0; }
-  .lg-section.wide { grid-column: 1 / -1; }
   .lg-section h3 { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 8px; }
   .lg-section h4 { font-family: var(--serif); font-size: 16px; font-weight: 600; margin: 10px 0 4px; }
-  .lg-section p { max-width: 62ch; margin-bottom: 8px; }
-  .lg-section ul { padding-left: 18px; max-width: 62ch; margin-bottom: 8px; }
+  .lg-section p { max-width: 74ch; margin-bottom: 8px; }
+  .lg-section ul { padding-left: 18px; max-width: 74ch; margin-bottom: 8px; }
   .lg-section li { margin-bottom: 4px; }
   .lg-section li::marker { color: var(--accent); }
   .btn-link {
@@ -366,7 +378,7 @@
   .sched small { display: block; color: var(--text-3); font-size: 13px; }
   .facts { display: grid; grid-template-columns: 150px 1fr; gap: 0 16px; }
   .facts dt { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text-3); padding-top: 11px; }
-  .facts dd { padding-block: 9px; border-top: 1px solid var(--line); max-width: 62ch; }
+  .facts dd { padding-block: 9px; border-top: 1px solid var(--line); max-width: 74ch; }
   .facts dt:first-of-type, .facts dd:first-of-type { border-top: 0; padding-top: 0; }
   .facts dd p { margin-bottom: 3px; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -390,7 +402,8 @@
   @media (max-width: 720px) {
     .topnav { width: 100%; }
     .logo-row { grid-template-columns: 1fr; gap: 8px; }
-    .lg-grid { grid-template-columns: 1fr; gap: 0; }
+    .lg-nav { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; }
+    .lg-nav::-webkit-scrollbar { display: none; }
     .sched li { grid-template-columns: 1fr; gap: 2px; }
     .facts { grid-template-columns: 1fr; }
     .facts dt { padding-top: 10px; border-top: 1px solid var(--line); }
@@ -498,8 +511,20 @@
     <h2>Logistics</h2>
     <p class="lede">Welcome to the AfricInvest AI Summit. Everything you need for the trip is here: arrival, hotel, the four-day outline, who to call and what to pack.</p>
 
+    <nav class="lg-nav" aria-label="Logistics sections">
+      <button type="button" data-lg="lg-hotel">Hotel</button>
+      <button type="button" data-lg="lg-transfers">Transfers</button>
+      <button type="button" data-lg="lg-whatsapp">WhatsApp</button>
+      <button type="button" data-lg="lg-programme">Programme</button>
+      <button type="button" data-lg="lg-know">Good to know</button>
+      <button type="button" data-lg="lg-emergency">Emergency</button>
+      <button type="button" data-lg="lg-expenses">Expenses</button>
+      <button type="button" data-lg="lg-contacts">Contacts</button>
+      <button type="button" data-lg="lg-photos">Photos</button>
+    </nav>
+
     <div class="lg-grid">
-      <div class="lg-section">
+      <div class="lg-section" id="lg-hotel">
         <h3>Accommodation</h3>
         <p>Your room is booked at The Residence Tunis. A separate email carries your hotel confirmation voucher.</p>
         <ul>
@@ -510,7 +535,7 @@
         <a class="btn-link" href="https://maps.app.goo.gl/WoFCp5ue7CCE9teb9" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>The Residence Tunis on the map</a>
       </div>
 
-      <div class="lg-section">
+      <div class="lg-section" id="lg-transfers">
         <h3>Airport transfers</h3>
         <h4>Arrival</h4>
         <ul>
@@ -523,12 +548,15 @@
           <li>Leave the hotel 3 hours before your flight; please check out on time</li>
           <li>A dedicated car takes you to the airport. If your travel plans change, tell us as early as you can so we can update the arrangements</li>
         </ul>
-        <h3 style="margin-top: 22px;">Summit WhatsApp group</h3>
+      </div>
+
+      <div class="lg-section" id="lg-whatsapp">
+        <h3>Summit WhatsApp group</h3>
         <p>Important updates, announcements and last-minute logistics go out on a dedicated WhatsApp group. Please join before you travel.</p>
         <a class="btn-link primary" href="https://chat.whatsapp.com/FAQ75GYw68XIiUDQgNnakd" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l1.9-4.9A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>Join the AI Summit WhatsApp group</a>
       </div>
 
-      <div class="lg-section wide">
+      <div class="lg-section" id="lg-programme">
         <h3>Programme and venue</h3>
         <p>The sessions take place over two days at the conference facilities of The Residence Tunis. Transport between all official venues is provided throughout the summit.</p>
         <ul class="sched">
@@ -541,8 +569,7 @@
         <a class="btn-link" href="https://calendar.google.com/calendar/u/0?cid=Y19mZmFkYjc4ZjMzNWZlNjZlNjQyZTA3MmFmYmFiYzFjYzU0ZTcwZTFlMGJhMWVjZjc5ZjFlYWM3MmEzNjg2NzQxQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Add the sessions to your calendar</a>
       </div>
 
-
-      <div class="lg-section">
+      <div class="lg-section" id="lg-know">
         <h3>Good to know</h3>
         <dl class="facts">
           <dt>Weather</dt>
@@ -556,10 +583,7 @@
           <dt>Dress code</dt>
           <dd>Casual attire.</dd>
         </dl>
-      </div>
-
-      <div class="lg-section">
-        <h3>Helpful apps in Tunisia</h3>
+        <h3 style="margin-top: 22px;">Helpful apps in Tunisia</h3>
         <dl class="facts">
           <dt>Transport</dt>
           <dd>inDrive, Yassir</dd>
@@ -567,7 +591,10 @@
           <dd>Glovo, Yassir Food</dd>
         </dl>
 
-        <h3 style="margin-top: 22px;">Emergency numbers</h3>
+      </div>
+
+      <div class="lg-section" id="lg-emergency">
+        <h3>Emergency numbers</h3>
         <div class="chips">
           <span class="chip"><b>197</b>Police</span>
           <span class="chip"><b>190</b>Ambulance (SAMU)</span>
@@ -575,14 +602,17 @@
           <span class="chip"><b>193</b>National Guard</span>
         </div>
 
-        <h3 style="margin-top: 22px;">Coverage and expenses</h3>
+      </div>
+
+      <div class="lg-section" id="lg-expenses">
+        <h3>Coverage and expenses</h3>
         <ul>
           <li><strong>Accommodation</strong> is covered for three nights, check-in on the 17th and check-out on the 20th. Additional nights are at your own expense</li>
           <li><strong>Meals and soft drinks</strong> that are part of the official programme are covered. Anything ordered outside the scheduled summit meals, including alcoholic drinks, and any personal expenses or activities outside the programme, are at your own expense</li>
         </ul>
       </div>
 
-      <div class="lg-section wide">
+      <div class="lg-section" id="lg-contacts">
         <h3>Who to contact</h3>
         <div class="contacts">
           <div class="contact"><b>Dali Lakhoua</b><span>Content and programme · AfricInvest</span><a href="https://wa.me/33629971166" target="_blank" rel="noopener">WhatsApp +33 6 29 97 11 66</a></div>
@@ -590,7 +620,7 @@
         </div>
       </div>
 
-      <div class="lg-section wide">
+      <div class="lg-section" id="lg-photos">
         <h3>Photography and video</h3>
         <p>Photographs and videos may be taken during the summit. The organisers may use them for communication and promotion, including on social media, websites, publications and reports about the summit.</p>
         <p>If you would rather not be photographed or filmed, or do not want your image used in any material, email <a href="mailto:dali.lakhoua@africinvest.com">dali.lakhoua@africinvest.com</a> before the summit and we will make every reasonable effort to respect your preference.</p>
@@ -857,6 +887,32 @@
     if (v === "agenda") { setView("agenda", false); setHash("#day" + currentDay()); }
     else setView(v, true);
   }));
+
+  // Logistics in-page navigation
+  const lgButtons = Array.from(document.querySelectorAll(".lg-nav [data-lg]"));
+  function lgMark(id) {
+    lgButtons.forEach(b => {
+      if (b.dataset.lg === id) { b.setAttribute("aria-current", "true"); try { b.scrollIntoView({ block: "nearest", inline: "nearest" }); } catch (err) {} }
+      else b.removeAttribute("aria-current");
+    });
+  }
+  let lgLock = 0;
+  lgButtons.forEach(b => b.addEventListener("click", () => {
+    const el = document.getElementById(b.dataset.lg);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    lgMark(b.dataset.lg);
+    lgLock = Date.now() + 1200;
+  }));
+  if ("IntersectionObserver" in window) {
+    const seen = new Map();
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => seen.set(e.target.id, e.isIntersecting));
+      if (Date.now() < lgLock) return;
+      const first = lgButtons.map(b => b.dataset.lg).find(id => seen.get(id));
+      if (first) lgMark(first);
+    }, { rootMargin: "-70px 0px -60% 0px", threshold: 0 });
+    lgButtons.forEach(b => { const el = document.getElementById(b.dataset.lg); if (el) io.observe(el); });
+  }
 
   setTrack(track);
   renderIndex();
