@@ -390,6 +390,24 @@
   .contact span { display: block; color: var(--text-2); font-size: 13px; margin-bottom: 8px; }
   .contact a { font-size: 14px; }
 
+  /* ---------- Participants ---------- */
+  .participants { padding-top: 18px; }
+  .participants h2 { font-family: var(--serif); font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+  .participants .lede { color: var(--text-2); font-size: 15px; max-width: 74ch; margin-bottom: 18px; }
+  .company-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .company {
+    display: grid; grid-template-columns: 132px 1fr; gap: 14px; align-items: start;
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px;
+  }
+  .company .logo-card { width: 132px; height: 76px; padding: 10px 12px; }
+  .company .logo-card:hover { border-color: var(--line); }
+  .company-body { min-width: 0; }
+  .company-body b { font-family: var(--serif); font-size: 17px; font-weight: 600; line-height: 1.25; display: block; margin-bottom: 4px; }
+  .company-body b a { color: var(--text); text-decoration: none; }
+  .company-body b a:hover { color: var(--accent-ink); }
+  .company-body small { display: block; font-size: 12px; color: var(--text-3); margin-bottom: 6px; word-break: break-all; }
+  .company-body p { font-size: 14px; color: var(--text-2); line-height: 1.45; }
+
   /* ---------- Sponsor strip (agenda view) ---------- */
   .sponsors { margin-top: 40px; padding-top: 22px; border-top: 2px solid var(--line); text-align: center; }
   .sponsors-label { font-size: 12px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--text-3); margin-bottom: 14px; }
@@ -402,6 +420,9 @@
   @media (max-width: 720px) {
     .topnav { width: 100%; }
     .logo-row { grid-template-columns: 1fr; gap: 8px; }
+    .company-grid { grid-template-columns: 1fr; gap: 10px; }
+    .company { grid-template-columns: 1fr; gap: 10px; padding: 12px; }
+    .company .logo-card { width: 132px; height: 70px; }
     .lg-nav { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; }
     .lg-nav::-webkit-scrollbar { display: none; }
     .sched li { grid-template-columns: 1fr; gap: 2px; }
@@ -450,14 +471,15 @@
     <button type="button" data-view-link="logistics">Logistics</button>
     <button type="button" data-view-link="people">Team</button>
     <button type="button" data-view-link="partners">Partners</button>
+    <button type="button" data-view-link="participants">Participants</button>
   </nav>
 </header>
 
 <div class="controls">
   <div class="controls-inner">
     <div class="seg days" role="tablist" aria-label="Day">
-      <button role="tab" data-day="1" aria-pressed="true">Day 1<small>Thu 18 Sept</small></button>
-      <button role="tab" data-day="2" aria-pressed="false">Day 2<small>Fri 19 Sept</small></button>
+      <button role="tab" data-day="1" aria-pressed="true">Day 1<small>Fri 18 Sept</small></button>
+      <button role="tab" data-day="2" aria-pressed="false">Day 2<small>Sat 19 Sept</small></button>
     </div>
     <div class="filters">
       <span class="track-label">Track</span>
@@ -482,11 +504,11 @@
 <main>
 <div class="view" data-view="agenda">
   <section class="day active" id="day1">
-    <div class="day-title">Day 1 <span>Thursday 18 September · 08:30 to 21:00</span></div>
+    <div class="day-title">Day 1 <span>Friday 18 September · 08:30 to 21:00</span></div>
     <div class="timeline" id="tl1"></div>
   </section>
   <section class="day" id="day2">
-    <div class="day-title">Day 2 <span>Friday 19 September · 09:00 to 21:30</span></div>
+    <div class="day-title">Day 2 <span>Saturday 19 September · 09:00 to 21:30</span></div>
     <div class="timeline" id="tl2"></div>
   </section>
 
@@ -652,6 +674,12 @@
       </div>
     </div>
   </section>
+
+  <section class="participants view" data-view="participants" id="participants">
+    <h2>Participants</h2>
+    <p class="lede">The AfricInvest portfolio companies in the room, in alphabetical order. Click a name to visit the company.</p>
+    <div class="company-grid" id="companies"></div>
+  </section>
 </main>
 
 <footer>
@@ -813,6 +841,53 @@
     document.getElementById("tl2").innerHTML = DAY2.map(x => row(x, track)).join("");
   }
 
+  const COMPANIES = [
+    { name: "Aura", url: "https://www.aurasos.com/", logo: "logos/aurasos.png",
+      blurb: "AURA is a South African technology company that connects individuals and businesses to emergency response services, providing on-demand emergency response services, connecting customers to nearby armed security responders, ambulances and other emergency assistance through its app/platform." },
+    { name: "Bfree", url: "https://www.bfree.io/", logo: "logos/bfree.png",
+      blurb: "Bfree is a fintech that helps banks and lenders manage and recover loans from borrowers, using technology and data-driven credit management solutions." },
+    { name: "Fidelity Bank Ghana", url: "https://fidelitybank.com.gh/", logo: "logos/fidelitybank.png",
+      blurb: "Fidelity Bank Ghana is a Ghanaian commercial bank serving retail, SME and corporate clients, with activities spanning traditional banking, investment banking and digital financial services, with a particularly strong positioning in the SME and financial inclusion segments. Fidelity has also invested significantly in digital banking and financial technology, including through OrangeTech, its wholly owned technology subsidiary focused on digital financial solutions, payment infrastructure and technology services. The Bank complements its in-house capabilities with partnerships with fintech and mobile money players, including JUMO and MTN Mobile Money, to expand digital lending and financial inclusion." },
+    { name: "Flouci", url: "https://www.flouci.com/", logo: "logos/flouci.png",
+      blurb: "Flouci is a Tunisia-based fintech offering a fully digital banking and payments platform through a mobile superapp. The platform provides users with digital current and savings accounts, wallets, transfers, bill payments, cards, merchant payments and other financial services, targeting individuals, freelancers, SMEs and corporates." },
+    { name: "GoMyCode", url: "https://gomycode.com/", logo: "logos/gomycode.png",
+      blurb: "GoMyCode is a tech education company offering coding, data, AI and other digital skills training through online and in-person bootcamps across Africa and the Middle East." },
+    { name: "I&M Group", url: "https://www.imbankgroup.com/", logo: "logos/imbankgroup.png",
+      blurb: "I&M Group is primarily a commercial banking and financial services group, serving retail, SME and corporate clients across East Africa. Its core banking business provides lending, deposits, payments, trade finance and other banking services, complemented by insurance/bancassurance, investment and corporate finance advisory, fund management and real estate activities. The Group is anchored by I&M Bank Kenya and has built a strong regional franchise through a combination of organic growth and acquisitions across Rwanda, Tanzania, Uganda and Mauritius. I&M has a relatively advanced digital offering for a traditional regional bank, with 92% of Group customers digitally active as of HY2026. The Group has invested significantly in its digital infrastructure, including mobile/web banking, digital lending and AI-enabled automation, while progressively shifting transactions away from branches." },
+    { name: "iSON", url: "https://www.isontechnologies.com/", logo: "logos/isontechnologies.jpeg",
+      blurb: "iSON is a technology-enabled business services company that helps large organisations manage their customer interactions and back-office operations. The Group provides outsourced call centre and customer support services, handling activities such as customer enquiries, complaints, sales and technical support on behalf of its clients. It combines human agents with AI, automation, analytics and digital channels such as voice, chat and messaging to deliver these services at scale." },
+    { name: "JEMS", url: "https://www.jems-group.com/", logo: "logos/jems-group.png",
+      blurb: "JEMS is a France-based data and digital services company helping large corporates build, manage and operationalise their data assets. Its offering spans data strategy and management, cloud and data platforms, analytics, AI and digital solutions, with a strong focus on taking data and AI use cases from experimentation into production." },
+    { name: "KaiOS", url: "https://www.kaiostech.com/", logo: "logos/kaiostech.png",
+      blurb: "KaiOS is a company that develops the operating system used by affordable \"smart\" feature phones, enabling them to access apps, internet, messaging and other digital services without being full smartphones." },
+    { name: "Konnect", url: "https://konnect.network/", logo: "logos/konnect.png",
+      blurb: "Konnect is a Tunisia-based fintech providing online payment and payment infrastructure solutions to freelancers, SMEs and large companies. Its core platform enables merchants to accept online payments through payment links, e-commerce plugins and APIs, including payments from international Visa and Mastercard cards." },
+    { name: "Kredete", url: "https://kredete.io/", logo: "logos/kredete.png",
+      blurb: "Kredete is a fintech providing instant digital payment and money-transfer solutions, enabling individuals and businesses to instantly receive payments across 60+ markets." },
+    { name: "Nile", url: "https://nile.ag/", logo: "logos/nile.png",
+      blurb: "Nile provides businesses and financial institutions with the infrastructure to send and receive cross-border payments across Africa, including local collection accounts, currency conversion and settlement." },
+    { name: "Oze", url: "https://getoze.com/", logo: "logos/getoze.png",
+      blurb: "Oze is a digital platform that helps small businesses manage their finances and operations, including bookkeeping, and cash-flow tracking, while partnering with banks and financial institutions to improve their ability to assess and serve SMEs." },
+    { name: "PalmPay", url: "https://www.palmpay.com/", logo: "logos/palmpay.png",
+      blurb: "PalmPay is a fintech providing digital payments and financial services, including mobile wallets, transfers, payments, and lending primarily to consumers and businesses in Nigeria and Pakistan." },
+    { name: "Pristini School of AI", url: "https://www.pristiniaiuniversity.tn/", logo: "logos/pristiniaiuniversity.png",
+      blurb: "Pristini School of AI is a Tunisia-based higher education institution specialising in artificial intelligence, data science and related digital technologies." },
+    { name: "Raynal Assurances", url: "https://raynalassurances.com/", logo: "logos/raynal.png",
+      blurb: "RAYNAL Assurances IARD is a Burkina Faso-based non-life insurance company offering property and casualty insurance products to corporate and retail clients. Established in 2005 and headquartered in Ouagadougou, the company provides coverage across key segments including motor, health, transport, fire and other general risks, with a strong corporate franchise complemented by a growing retail offering. RAYNAL has historically been one of the leading players in the Burkinabe insurance market, ranking among the top three insurers with a market share of over 13%." },
+    { name: "Rex Insurance", url: "https://rexinsure.com/", logo: "logos/rexinsure.png",
+      blurb: "Rex Insurance Limited is a Nigeria-based general insurance company offering non-life insurance products to corporate and retail clients. Formerly known as Royal Exchange General Insurance Company, the company rebranded as Rex Insurance in 2024 as part of a broader transformation focused on improving customer experience, expanding its retail offering and leveraging technology." },
+    { name: "Spoon", url: "https://spoonconsulting.com/", logo: "logos/spoonconsulting.png",
+      blurb: "SPOON is a technology company developing AI-powered solutions to automate business processes and improve employee and customer interactions. Its offering combines artificial intelligence, data and automation to develop tailored use cases for companies, with applications across areas such as customer service, internal operations and digital assistance." },
+    { name: "Turaco", url: "https://turaco.insure/", logo: "logos/turaco.png",
+      blurb: "Turaco is an insurtech that provides affordable health insurance through mobile and digital channels, partnering with employers, banks and other businesses to distribute cover to underserved customers." },
+    { name: "Vantage Payment Systems", url: "https://vpscorp.ma/", logo: "logos/vps.png",
+      blurb: "Vantage Payment Systems (VPS) is a payment technology company providing digital payment infrastructure and solutions to banks, fintechs and businesses, including card issuing, processing and payment services." },
+    { name: "Vneuron", url: "https://www.vneuron.com/", logo: "logos/vneuron.png",
+      blurb: "Vneuron is a Tunisia-founded RegTech company providing AI-enabled anti-money laundering and financial crime compliance solutions to financial institutions. Established in 2007, its flagship Reis Risk & Compliance Suite automates customer due diligence, sanctions and name screening, transaction monitoring, risk assessment, case management and regulatory reporting. Vneuron serves more than 250 financial institutions across 45+ countries, including banks, insurers, leasing companies, investment funds and microfinance institutions." },
+    { name: "Wattnow", url: "https://www.wattnow.io/", logo: "logos/wattnow.png",
+      blurb: "Wattnow is a Tunisia-founded energy technology company providing IoT-based energy monitoring and management solutions to industrial and commercial sites. The company designs its own smart meters, software and algorithms to monitor energy consumption at circuit level and identify anomalies, inefficiencies and optimisation opportunities." }
+  ];
+
   function renderPeople() {
     const initials = n => n.replace(/,.*$/, "").split(/\s+/).filter(Boolean).map(w => w[0]).slice(0, 2).join("");
     document.getElementById("people-groups").innerHTML = PEOPLE.map(g => `
@@ -823,6 +898,19 @@
             <div class="portrait" data-initials="${esc(initials(m.name))}">${m.photo ? `<img src="${esc(m.photo)}" alt="${esc(m.name)}" loading="lazy" onerror="this.remove()">` : ""}</div>
             <b>${esc(m.name)}</b><span>${esc(m.role)}</span>
           </div>`).join("")}</div>
+      </div>`).join("");
+  }
+
+  function renderCompanies() {
+    const host = u => u.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+    document.getElementById("companies").innerHTML = COMPANIES.map(c => `
+      <div class="company">
+        <a class="logo-card" href="${esc(c.url)}" target="_blank" rel="noopener" aria-label="${esc(c.name)} website"><img src="${esc(c.logo)}" alt="${esc(c.name)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'), {textContent: this.alt}))"></a>
+        <div class="company-body">
+          <b><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.name)}</a></b>
+          <small>${esc(host(c.url))}</small>
+          <p>${esc(c.blurb)}</p>
+        </div>
       </div>`).join("");
   }
 
@@ -861,7 +949,7 @@
   document.querySelectorAll("[data-track]").forEach(b => b.addEventListener("click", () => setTrack(b.dataset.track)));
 
   // Views: Agenda (default), Logistics, Team, Partners
-  const VIEWS = ["agenda", "logistics", "people", "partners"];
+  const VIEWS = ["agenda", "logistics", "people", "partners", "participants"];
   const TOP = (() => { try { return window.top === window; } catch (err) { return false; } })();
   function setHash(h) { if (!TOP) return; try { history.replaceState(null, "", h); } catch (err) {} }
   function setView(name, push) {
@@ -917,6 +1005,7 @@
   setTrack(track);
   renderIndex();
   renderPeople();
+  renderCompanies();
   route();
   window.addEventListener("hashchange", route);
 </script>
