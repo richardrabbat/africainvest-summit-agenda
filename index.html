@@ -407,6 +407,25 @@
   .company-body b a:hover { color: var(--accent-ink); }
   .company-body small { display: block; font-size: 12px; color: var(--text-3); margin-bottom: 6px; word-break: break-all; }
   .company-body p { font-size: 14px; color: var(--text-2); line-height: 1.45; }
+  .people-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .attendee {
+    display: inline-flex; align-items: center; gap: 7px; padding: 3px 10px 3px 3px;
+    border: 1px solid var(--line); border-radius: 999px; background: var(--chip-bg);
+    font-size: 13px; line-height: 1.2; color: var(--text); text-decoration: none; max-width: 100%;
+  }
+  a.attendee:hover, a.attendee:focus-visible { border-color: var(--accent); color: var(--accent-ink); }
+  .attendee > span:nth-child(2) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .avatar {
+    position: relative; flex: none; width: 24px; height: 24px; border-radius: 50%; overflow: hidden;
+    background: var(--card); border: 1px solid var(--line); color: var(--teal); display: grid; place-items: center;
+  }
+  .avatar svg { width: 15px; height: 15px; }
+  .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .attendee .in {
+    font: 700 10px/1 var(--sans); letter-spacing: 0; color: var(--text-3);
+    border: 1px solid currentColor; border-radius: 3px; padding: 2px 3px 1px; opacity: .8;
+  }
+  a.attendee:hover .in { color: var(--accent-ink); opacity: 1; }
 
   /* ---------- Sponsor strip (agenda view) ---------- */
   .sponsors { margin-top: 40px; padding-top: 22px; border-top: 2px solid var(--line); text-align: center; }
@@ -701,7 +720,7 @@
 
   <section class="participants view" data-view="participants" id="participants">
     <h2>Participants</h2>
-    <p class="lede">The AfricInvest portfolio companies in the room, in alphabetical order. Click a name to visit the company.</p>
+    <p class="lede">The AfricInvest portfolio companies in the room, in alphabetical order, and the people joining from each. Click a company name to visit its site, or a person to open their LinkedIn profile.</p>
     <div class="company-grid" id="companies"></div>
   </section>
 </main>
@@ -867,49 +886,74 @@
 
   const COMPANIES = [
     { name: "Aura", url: "https://www.aurasos.com/", logo: "logos/aurasos.png",
-      blurb: "AURA is a South African technology company that connects individuals and businesses to emergency response services, providing on-demand emergency response services, connecting customers to nearby armed security responders, ambulances and other emergency assistance through its app/platform." },
+      blurb: "AURA is a South African technology company that connects individuals and businesses to emergency response services, providing on-demand emergency response services, connecting customers to nearby armed security responders, ambulances and other emergency assistance through its app/platform.",
+      people: [{ n: "Reinhard Holl", li: "https://www.linkedin.com/in/reinhard-h%C3%B6ll-48a0505b/" }, { n: "Grant Macwilliam", li: "https://www.linkedin.com/in/grant-macwilliam-40832ba4/" }] },
     { name: "Bfree", url: "https://www.bfree.io/", logo: "logos/bfree.png",
-      blurb: "Bfree is a fintech that helps banks and lenders manage and recover loans from borrowers, using technology and data-driven credit management solutions." },
+      blurb: "Bfree is a fintech that helps banks and lenders manage and recover loans from borrowers, using technology and data-driven credit management solutions.",
+      people: [{ n: "Julian Flosbach", li: "https://www.linkedin.com/in/julian-flosbach-461a8756/" }, { n: "Moses Nmor", li: "https://www.linkedin.com/in/moses-azubuike-nmor/" }] },
     { name: "Fidelity Bank Ghana", url: "https://fidelitybank.com.gh/", logo: "logos/fidelitybank.png",
-      blurb: "Fidelity Bank Ghana is a Ghanaian commercial bank serving retail, SME and corporate clients, with activities spanning traditional banking, investment banking and digital financial services, with a particularly strong positioning in the SME and financial inclusion segments. Fidelity has also invested significantly in digital banking and financial technology, including through OrangeTech, its wholly owned technology subsidiary focused on digital financial solutions, payment infrastructure and technology services. The Bank complements its in-house capabilities with partnerships with fintech and mobile money players, including JUMO and MTN Mobile Money, to expand digital lending and financial inclusion." },
+      blurb: "Fidelity Bank Ghana is a Ghanaian commercial bank serving retail, SME and corporate clients, with activities spanning traditional banking, investment banking and digital financial services, with a particularly strong positioning in the SME and financial inclusion segments. Fidelity has also invested significantly in digital banking and financial technology, including through OrangeTech, its wholly owned technology subsidiary focused on digital financial solutions, payment infrastructure and technology services. The Bank complements its in-house capabilities with partnerships with fintech and mobile money players, including JUMO and MTN Mobile Money, to expand digital lending and financial inclusion.",
+      people: [{ n: "Edna Engmann", li: "https://www.linkedin.com/in/edna-engmann-42733610/" }, { n: "Abu Yahaya", li: "https://www.linkedin.com/in/abu-yahaya-1bab312b/" }] },
     { name: "Flouci", url: "https://www.flouci.com/", logo: "logos/flouci.png",
-      blurb: "Flouci is a Tunisia-based fintech offering a fully digital banking and payments platform through a mobile superapp. The platform provides users with digital current and savings accounts, wallets, transfers, bill payments, cards, merchant payments and other financial services, targeting individuals, freelancers, SMEs and corporates." },
+      blurb: "Flouci is a Tunisia-based fintech offering a fully digital banking and payments platform through a mobile superapp. The platform provides users with digital current and savings accounts, wallets, transfers, bill payments, cards, merchant payments and other financial services, targeting individuals, freelancers, SMEs and corporates.",
+      people: [{ n: "Anis Kallel", li: "https://www.linkedin.com/in/aniskallel/" }, { n: "Nebras Jemel", li: "https://www.linkedin.com/in/nebrasjemel/" }] },
     { name: "GoMyCode", url: "https://gomycode.com/", logo: "logos/gomycode.png",
-      blurb: "GoMyCode is a tech education company offering coding, data, AI and other digital skills training through online and in-person bootcamps across Africa and the Middle East." },
+      blurb: "GoMyCode is a tech education company offering coding, data, AI and other digital skills training through online and in-person bootcamps across Africa and the Middle East.",
+      people: [{ n: "Yahya Bouhlel", li: "https://www.linkedin.com/in/yahyabouhlel/" }] },
     { name: "I&M Group", url: "https://www.imbankgroup.com/", logo: "logos/imbankgroup.png",
-      blurb: "I&M Group is primarily a commercial banking and financial services group, serving retail, SME and corporate clients across East Africa. Its core banking business provides lending, deposits, payments, trade finance and other banking services, complemented by insurance/bancassurance, investment and corporate finance advisory, fund management and real estate activities. The Group is anchored by I&M Bank Kenya and has built a strong regional franchise through a combination of organic growth and acquisitions across Rwanda, Tanzania, Uganda and Mauritius. I&M has a relatively advanced digital offering for a traditional regional bank, with 92% of Group customers digitally active as of HY2026. The Group has invested significantly in its digital infrastructure, including mobile/web banking, digital lending and AI-enabled automation, while progressively shifting transactions away from branches." },
+      blurb: "I&M Group is primarily a commercial banking and financial services group, serving retail, SME and corporate clients across East Africa. Its core banking business provides lending, deposits, payments, trade finance and other banking services, complemented by insurance/bancassurance, investment and corporate finance advisory, fund management and real estate activities. The Group is anchored by I&M Bank Kenya and has built a strong regional franchise through a combination of organic growth and acquisitions across Rwanda, Tanzania, Uganda and Mauritius. I&M has a relatively advanced digital offering for a traditional regional bank, with 92% of Group customers digitally active as of HY2026. The Group has invested significantly in its digital infrastructure, including mobile/web banking, digital lending and AI-enabled automation, while progressively shifting transactions away from branches.",
+      people: [{ n: "Eunice Ruguru Gatama", li: "https://www.linkedin.com/in/eunicerg/" }] },
     { name: "iSON", url: "https://www.isontechnologies.com/", logo: "logos/isontechnologies.jpeg",
-      blurb: "iSON is a technology-enabled business services company that helps large organisations manage their customer interactions and back-office operations. The Group provides outsourced call centre and customer support services, handling activities such as customer enquiries, complaints, sales and technical support on behalf of its clients. It combines human agents with AI, automation, analytics and digital channels such as voice, chat and messaging to deliver these services at scale." },
+      blurb: "iSON is a technology-enabled business services company that helps large organisations manage their customer interactions and back-office operations. The Group provides outsourced call centre and customer support services, handling activities such as customer enquiries, complaints, sales and technical support on behalf of its clients. It combines human agents with AI, automation, analytics and digital channels such as voice, chat and messaging to deliver these services at scale.",
+      people: [{ n: "Lalitesh Sharma", li: "https://www.linkedin.com/in/lalitesh-sharma/" }, { n: "Rami Sweis", li: "https://www.linkedin.com/in/rami-sweis/" }] },
     { name: "JEMS", url: "https://www.jems-group.com/", logo: "logos/jems-group.png",
-      blurb: "JEMS is a France-based data and digital services company helping large corporates build, manage and operationalise their data assets. Its offering spans data strategy and management, cloud and data platforms, analytics, AI and digital solutions, with a strong focus on taking data and AI use cases from experimentation into production." },
+      blurb: "JEMS is a France-based data and digital services company helping large corporates build, manage and operationalise their data assets. Its offering spans data strategy and management, cloud and data platforms, analytics, AI and digital solutions, with a strong focus on taking data and AI use cases from experimentation into production.",
+      people: [{ n: "Mohamed El Ouarirghli", li: "https://www.linkedin.com/in/mohamed-el-ouarieghli-37926b83/" }, { n: "Talel Ben Ayed", li: "https://www.linkedin.com/in/talelbenayed/" }] },
     { name: "KaiOS", url: "https://www.kaiostech.com/", logo: "logos/kaiostech.png",
-      blurb: "KaiOS is a company that develops the operating system used by affordable \"smart\" feature phones, enabling them to access apps, internet, messaging and other digital services without being full smartphones." },
+      blurb: "KaiOS is a company that develops the operating system used by affordable \"smart\" feature phones, enabling them to access apps, internet, messaging and other digital services without being full smartphones.",
+      people: [{ n: "Sebastien Codeville", li: "https://www.linkedin.com/in/sebastiencodeville/" }] },
     { name: "Konnect", url: "https://konnect.network/", logo: "logos/konnect.png",
-      blurb: "Konnect is a Tunisia-based fintech providing online payment and payment infrastructure solutions to freelancers, SMEs and large companies. Its core platform enables merchants to accept online payments through payment links, e-commerce plugins and APIs, including payments from international Visa and Mastercard cards." },
+      blurb: "Konnect is a Tunisia-based fintech providing online payment and payment infrastructure solutions to freelancers, SMEs and large companies. Its core platform enables merchants to accept online payments through payment links, e-commerce plugins and APIs, including payments from international Visa and Mastercard cards.",
+      people: [{ n: "Amin Ben Abderahman", li: "https://www.linkedin.com/in/aminbenab/" }] },
     { name: "Kredete", url: "https://kredete.io/", logo: "logos/kredete.png",
-      blurb: "Kredete is a fintech providing instant digital payment and money-transfer solutions, enabling individuals and businesses to instantly receive payments across 60+ markets." },
+      blurb: "Kredete is a fintech providing instant digital payment and money-transfer solutions, enabling individuals and businesses to instantly receive payments across 60+ markets.",
+      people: [{ n: "Adeola Adedewe", li: "https://www.linkedin.com/in/adeolaadedewe/" }, { n: "Hakeem Oriola", li: "https://www.linkedin.com/in/hakeemoriola/" }, { n: "Gary Cohen", li: "https://www.linkedin.com/in/cohengary/" }, { n: "Joshua Edicha", li: "https://www.linkedin.com/in/mredichaj/" }, { n: "Ebuka Arinze", li: "https://www.linkedin.com/in/ebukaarinze1/" }] },
     { name: "Nile", url: "https://nile.ag/", logo: "logos/nile.png",
-      blurb: "Nile provides businesses and financial institutions with the infrastructure to send and receive cross-border payments across Africa, including local collection accounts, currency conversion and settlement." },
+      blurb: "Nile provides businesses and financial institutions with the infrastructure to send and receive cross-border payments across Africa, including local collection accounts, currency conversion and settlement.",
+      people: [{ n: "Rick Kleinhans", li: "https://www.linkedin.com/in/rickkln/" }, { n: "Luca Singels", li: "https://www.linkedin.com/in/lucasingels/" }] },
     { name: "Oze", url: "https://getoze.com/", logo: "logos/getoze.png",
-      blurb: "Oze is a digital platform that helps small businesses manage their finances and operations, including bookkeeping, and cash-flow tracking, while partnering with banks and financial institutions to improve their ability to assess and serve SMEs." },
+      blurb: "Oze is a digital platform that helps small businesses manage their finances and operations, including bookkeeping, and cash-flow tracking, while partnering with banks and financial institutions to improve their ability to assess and serve SMEs.",
+      people: [{ n: "Meghan McCormick", li: "https://www.linkedin.com/in/meghan-mccormick-1301936/" }] },
     { name: "PalmPay", url: "https://www.palmpay.com/", logo: "logos/palmpay.png",
-      blurb: "PalmPay is a fintech providing digital payments and financial services, including mobile wallets, transfers, payments, and lending primarily to consumers and businesses in Nigeria and Pakistan." },
+      blurb: "PalmPay is a fintech providing digital payments and financial services, including mobile wallets, transfers, payments, and lending primarily to consumers and businesses in Nigeria and Pakistan.",
+      people: [{ n: "Jiapei Yan", li: "https://www.linkedin.com/in/jiapeiyan/" }, { n: "Zichen Wu (Chen)" }] },
+    { name: "Paytic", url: "https://paytic.ai/", logo: "logos/paytic.png",
+      blurb: "Paytic builds AI-powered components that automate the payments back-office (reconciliation, dispute resolution, card scheme compliance, network fee management) for banks, fintechs, processors and enterprise merchants, with over 1B transactions processed and clients reporting up to 90% reduction in reconciliation work and 10x faster dispute resolution.",
+      people: [{ n: "Hossam Ezzoukh", li: "https://www.linkedin.com/in/hossam-ezzoukh/" }, { n: "Ikbel Kaouiche", li: "https://www.linkedin.com/in/ikbel-kaouiche-a9a908185/" }] },
     { name: "Pristini School of AI", url: "https://www.pristiniaiuniversity.tn/", logo: "logos/pristiniaiuniversity.png",
-      blurb: "Pristini School of AI is a Tunisia-based higher education institution specialising in artificial intelligence, data science and related digital technologies." },
+      blurb: "Pristini School of AI is a Tunisia-based higher education institution specialising in artificial intelligence, data science and related digital technologies.",
+      people: [{ n: "Nawel Souissi", li: "https://www.linkedin.com/in/nawel-souissi-phd/" }] },
     { name: "Raynal Assurances", url: "https://raynalassurances.com/", logo: "logos/raynal.png",
-      blurb: "RAYNAL Assurances IARD is a Burkina Faso-based non-life insurance company offering property and casualty insurance products to corporate and retail clients. Established in 2005 and headquartered in Ouagadougou, the company provides coverage across key segments including motor, health, transport, fire and other general risks, with a strong corporate franchise complemented by a growing retail offering. RAYNAL has historically been one of the leading players in the Burkinabe insurance market, ranking among the top three insurers with a market share of over 13%." },
+      blurb: "RAYNAL Assurances IARD is a Burkina Faso-based non-life insurance company offering property and casualty insurance products to corporate and retail clients. Established in 2005 and headquartered in Ouagadougou, the company provides coverage across key segments including motor, health, transport, fire and other general risks, with a strong corporate franchise complemented by a growing retail offering. RAYNAL has historically been one of the leading players in the Burkinabe insurance market, ranking among the top three insurers with a market share of over 13%.",
+      people: [{ n: "Osee Gaetan Quenum", li: "https://www.linkedin.com/in/os%C3%A9e-ga%C3%A9tan-possy-berry-quenum-b70a1336/" }, { n: "Jean Minoungou", li: "https://www.linkedin.com/in/jean-anthime-minoungou-6580a92a/" }] },
     { name: "Rex Insurance", url: "https://rexinsure.com/", logo: "logos/rexinsure.png",
-      blurb: "Rex Insurance Limited is a Nigeria-based general insurance company offering non-life insurance products to corporate and retail clients. Formerly known as Royal Exchange General Insurance Company, the company rebranded as Rex Insurance in 2024 as part of a broader transformation focused on improving customer experience, expanding its retail offering and leveraging technology." },
+      blurb: "Rex Insurance Limited is a Nigeria-based general insurance company offering non-life insurance products to corporate and retail clients. Formerly known as Royal Exchange General Insurance Company, the company rebranded as Rex Insurance in 2024 as part of a broader transformation focused on improving customer experience, expanding its retail offering and leveraging technology.",
+      people: [{ n: "Ebelechukwu Nwachukwu", li: "https://www.linkedin.com/in/ebelechukwu-nwachukwu-99a1652/" }, { n: "Aderombi Adeyinka Kehinde", li: "https://www.linkedin.com/in/adeyinkaaderombi/" }] },
     { name: "Spoon", url: "https://spoonconsulting.com/", logo: "logos/spoonconsulting.png",
-      blurb: "SPOON is a technology company developing AI-powered solutions to automate business processes and improve employee and customer interactions. Its offering combines artificial intelligence, data and automation to develop tailored use cases for companies, with applications across areas such as customer service, internal operations and digital assistance." },
+      blurb: "SPOON is a technology company developing AI-powered solutions to automate business processes and improve employee and customer interactions. Its offering combines artificial intelligence, data and automation to develop tailored use cases for companies, with applications across areas such as customer service, internal operations and digital assistance.",
+      people: [{ n: "Vimal Doolhur", li: "https://www.linkedin.com/in/vimal-d-89b4177/" }] },
     { name: "Turaco", url: "https://turaco.insure/", logo: "logos/turaco.png",
-      blurb: "Turaco is an insurtech that provides affordable health insurance through mobile and digital channels, partnering with employers, banks and other businesses to distribute cover to underserved customers." },
+      blurb: "Turaco is an insurtech that provides affordable health insurance through mobile and digital channels, partnering with employers, banks and other businesses to distribute cover to underserved customers.",
+      people: [{ n: "Ted Pantone", li: "https://www.linkedin.com/in/ted-pantone-957a182/" }] },
     { name: "Vantage Payment Systems", url: "https://vpscorp.ma/", logo: "logos/vps.png",
-      blurb: "Vantage Payment Systems (VPS) is a payment technology company providing digital payment infrastructure and solutions to banks, fintechs and businesses, including card issuing, processing and payment services." },
+      blurb: "Vantage Payment Systems (VPS) is a payment technology company providing digital payment infrastructure and solutions to banks, fintechs and businesses, including card issuing, processing and payment services.",
+      people: [{ n: "Mehdi Atraimche", li: "https://www.linkedin.com/in/mehdi-atraimche/" }, { n: "Mouad Aboussiber", li: "https://www.linkedin.com/in/mouad-a-86a110141/" }] },
     { name: "Vneuron", url: "https://www.vneuron.com/", logo: "logos/vneuron.png",
-      blurb: "Vneuron is a Tunisia-founded RegTech company providing AI-enabled anti-money laundering and financial crime compliance solutions to financial institutions. Established in 2007, its flagship Reis Risk & Compliance Suite automates customer due diligence, sanctions and name screening, transaction monitoring, risk assessment, case management and regulatory reporting. Vneuron serves more than 250 financial institutions across 45+ countries, including banks, insurers, leasing companies, investment funds and microfinance institutions." },
+      blurb: "Vneuron is a Tunisia-founded RegTech company providing AI-enabled anti-money laundering and financial crime compliance solutions to financial institutions. Established in 2007, its flagship Reis Risk & Compliance Suite automates customer due diligence, sanctions and name screening, transaction monitoring, risk assessment, case management and regulatory reporting. Vneuron serves more than 250 financial institutions across 45+ countries, including banks, insurers, leasing companies, investment funds and microfinance institutions.",
+      people: [{ n: "Ghassen Hamrouni", li: "https://www.linkedin.com/in/ghassen-hamrouni-3405799/" }] },
     { name: "Wattnow", url: "https://www.wattnow.io/", logo: "logos/wattnow.png",
-      blurb: "Wattnow is a Tunisia-founded energy technology company providing IoT-based energy monitoring and management solutions to industrial and commercial sites. The company designs its own smart meters, software and algorithms to monitor energy consumption at circuit level and identify anomalies, inefficiencies and optimisation opportunities." }
+      blurb: "Wattnow is a Tunisia-founded energy technology company providing IoT-based energy monitoring and management solutions to industrial and commercial sites. The company designs its own smart meters, software and algorithms to monitor energy consumption at circuit level and identify anomalies, inefficiencies and optimisation opportunities.",
+      people: [{ n: "Issam Smaali", li: "https://www.linkedin.com/in/issamsmaali/" }, { n: "Aymen Tabib", li: "https://www.linkedin.com/in/aymen-tabib-9b3b1433/" }] },
   ];
 
   function renderPeople() {
@@ -925,8 +969,21 @@
       </div>`).join("");
   }
 
+  // Participant photos: set to true once square PNGs exist in participants/, named from the person's name
+  // (lower case, accents stripped, spaces to hyphens, e.g. participants/luca-singels.png). A missing file
+  // falls back to the robot. Left false so the page does not request 40-odd files that are not there yet.
+  const PARTICIPANT_PHOTOS = false;
+  const ROBOT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5v3"/><circle cx="12" cy="2.6" r="1.1" fill="currentColor" stroke="none"/><rect x="4" y="6.5" width="16" height="12" rx="3"/><circle cx="9" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M9.2 15.6h5.6"/><path d="M2 11v4M22 11v4"/></svg>';
+  const slug = n => n.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\(.*?\)/g, "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
   function renderCompanies() {
     const host = u => u.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+    const person = p => {
+      const avatar = `<span class="avatar">${ROBOT}${PARTICIPANT_PHOTOS ? `<img src="participants/${slug(p.n)}.png" alt="" loading="lazy" onerror="this.remove()">` : ""}</span>`;
+      return p.li
+        ? `<a class="attendee" href="${esc(p.li)}" target="_blank" rel="noopener" title="${esc(p.n)} on LinkedIn">${avatar}<span>${esc(p.n)}</span><span class="in" aria-hidden="true">in</span></a>`
+        : `<span class="attendee">${avatar}<span>${esc(p.n)}</span></span>`;
+    };
     document.getElementById("companies").innerHTML = COMPANIES.map(c => `
       <div class="company">
         <a class="logo-card" href="${esc(c.url)}" target="_blank" rel="noopener" aria-label="${esc(c.name)} website"><img src="${esc(c.logo)}" alt="${esc(c.name)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'), {textContent: this.alt}))"></a>
@@ -934,6 +991,7 @@
           <b><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.name)}</a></b>
           <small>${esc(host(c.url))}</small>
           <p>${esc(c.blurb)}</p>
+          ${(c.people || []).length ? `<div class="people-row" aria-label="Participants from ${esc(c.name)}">${c.people.map(person).join("")}</div>` : ""}
         </div>
       </div>`).join("");
   }
