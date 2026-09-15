@@ -358,6 +358,22 @@
   .lg-section p { max-width: 74ch; margin-bottom: 8px; }
   .lg-section ul { padding-left: 18px; max-width: 74ch; margin-bottom: 8px; }
   .lg-section li { margin-bottom: 4px; }
+  .wx { max-width: 86ch; margin-bottom: 16px; }
+  .wx-head { display: flex; justify-content: space-between; align-items: baseline; gap: 6px 14px; flex-wrap: wrap; margin-bottom: 8px; }
+  .wx-head h3 { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-ink); }
+  .wx-place { font-size: 12px; color: var(--text-3); }
+  .wx-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+  .wx-day {
+    display: grid; justify-items: center; gap: 3px; padding: 10px 6px 9px; text-align: center;
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px; min-width: 0;
+  }
+  .wx-day.today { border-color: var(--accent); }
+  .wx-day b { font-family: var(--serif); font-size: 15px; font-weight: 600; line-height: 1.2; }
+  .wx-day svg { width: 30px; height: 30px; color: var(--teal); margin: 2px 0; }
+  .wx-day .t { font-size: 14px; font-variant-numeric: tabular-nums; color: var(--text); }
+  .wx-day .t span { color: var(--text-3); }
+  .wx-day small { font-size: 11.5px; color: var(--text-2); line-height: 1.25; }
+  .wx-note { grid-column: 1 / -1; font-size: 13px; color: var(--text-3); padding: 6px 0; }
   .lg-section li::marker { color: var(--accent); }
   .btn-link {
     display: inline-flex; align-items: center; gap: 8px; margin: 4px 8px 6px 0;
@@ -450,6 +466,12 @@
     .company { grid-template-columns: 1fr; gap: 10px; padding: 12px; }
     .company .logo-card { width: 132px; height: 70px; }
     .lg-nav { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -16px; padding-inline: 16px; }
+    .wx-row { gap: 5px; }
+    .wx-day { padding: 8px 3px 7px; }
+    .wx-day b { font-size: 13.5px; }
+    .wx-day svg { width: 24px; height: 24px; }
+    .wx-day .t { font-size: 13px; }
+    .wx-day small { display: none; }
     .lg-nav::-webkit-scrollbar { display: none; }
     .sched li { grid-template-columns: 1fr; gap: 2px; }
     .facts { grid-template-columns: 1fr; }
@@ -567,6 +589,11 @@
   <section class="logistics view" data-view="logistics" id="logistics">
     <h2>Logistics</h2>
     <p class="lede">Welcome to the AfricInvest AI Summit. Everything you need for the trip is here: arrival, hotel, the four-day outline, who to call and what to pack.</p>
+
+    <div class="wx" id="wx">
+      <div class="wx-head"><h3 id="wx-label">Forecast for the summit week</h3><span class="wx-place">Gammarth, Tunis · via Open-Meteo</span></div>
+      <div class="wx-row" id="wx-row" aria-live="polite"><span class="wx-note">Loading the forecast</span></div>
+    </div>
 
     <nav class="lg-nav" aria-label="Logistics sections">
       <button type="button" data-lg="lg-hotel">Hotel</button>
@@ -1034,8 +1061,50 @@
   const VIEWS = ["agenda", "logistics", "people", "partners", "participants"];
   const TOP = (() => { try { return window.top === window; } catch (err) { return false; } })();
   function setHash(h) { if (!TOP) return; try { history.replaceState(null, "", h); } catch (err) {} }
+  // ---------- Weather strip (Logistics view): Open-Meteo, free, no key. Fetched once, on the first visit to Logistics ----------
+  const WX = { lat: 36.92, lon: 10.30, tz: "Africa/Tunis", from: "2026-09-16", to: "2026-09-20" };
+  const WX_ICON = {
+    sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg>',
+    part: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 6.2a3.6 3.6 0 0 1 6.6 1.2M7 4.2v1.3M3.2 8h1.3M4.7 4.7l.9.9"/><path d="M7 19.5h9.5a3.5 3.5 0 0 0 .4-7 5 5 0 0 0-9.6 1.2A3 3 0 0 0 7 19.5z"/></svg>',
+    cloud: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18.5h10a4 4 0 0 0 .5-8 5.5 5.5 0 0 0-10.6 1.4A3.3 3.3 0 0 0 7 18.5z"/></svg>',
+    fog: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9h12M6 13h14M4 17h13"/></svg>',
+    rain: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 15.5h10a4 4 0 0 0 .5-8 5.5 5.5 0 0 0-10.6 1.4A3.3 3.3 0 0 0 7 15.5z"/><path d="M9 18.5l-1 2.5M13 18.5l-1 2.5M17 18.5l-1 2.5"/></svg>',
+    storm: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14.5h10a4 4 0 0 0 .5-8 5.5 5.5 0 0 0-10.6 1.4A3.3 3.3 0 0 0 7 14.5z"/><path d="M12.5 14.5l-2 4h3l-2 4"/></svg>'
+  };
+  function wxKind(code) {
+    if (code === 0) return ["sun", "Sunny"];
+    if (code <= 2) return ["part", code === 1 ? "Mainly sunny" : "Partly cloudy"];
+    if (code === 3) return ["cloud", "Overcast"];
+    if (code < 50) return ["fog", "Fog"];
+    if (code < 70 || (code >= 80 && code < 90)) return ["rain", code < 60 ? "Drizzle" : "Rain"];
+    if (code < 80) return ["rain", "Sleet"];
+    return ["storm", "Thunderstorms"];
+  }
+  let wxLoaded = false;
+  function loadWeather() {
+    if (wxLoaded) return; wxLoaded = true;
+    const row = document.getElementById("wx-row");
+    const today = new Date().toISOString().slice(0, 10);
+    if (today > WX.to) document.getElementById("wx-label").textContent = "Weather during the summit week";
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${WX.lat}&longitude=${WX.lon}&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=${encodeURIComponent(WX.tz)}&start_date=${WX.from}&end_date=${WX.to}`;
+    fetch(url).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(d => {
+      const t = d.daily;
+      row.innerHTML = t.time.map((day, i) => {
+        const [k, label] = wxKind(t.weather_code[i]);
+        const dt = new Date(day + "T12:00:00");
+        const name = dt.toLocaleDateString("en-GB", { weekday: "short" }) + " " + dt.getDate();
+        return `<div class="wx-day${day === today ? " today" : ""}" title="${label}">
+          <b>${name}</b>${WX_ICON[k]}
+          <span class="t">${Math.round(t.temperature_2m_max[i])}° <span>${Math.round(t.temperature_2m_min[i])}°</span></span>
+          <small>${label}</small>
+        </div>`;
+      }).join("");
+    }).catch(() => { row.innerHTML = '<span class="wx-note">The forecast is not available right now. Mid-September in Tunis is usually warm, around 28°C by day and 20°C at night.</span>'; });
+  }
+
   function setView(name, push) {
     if (!VIEWS.includes(name)) name = "agenda";
+    if (name === "logistics") loadWeather();
     document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.dataset.view === name));
     document.querySelectorAll("[data-view-link]").forEach(a => {
       if (a.dataset.viewLink === name) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
