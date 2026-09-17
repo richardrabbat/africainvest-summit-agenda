@@ -155,6 +155,16 @@
     display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
     padding-block: 10px;
   }
+  .controls-left { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .toolkit-link {
+    display: none;
+    appearance: none; -webkit-appearance: none; background: none; border: 0; padding: 0;
+    font: inherit; font-size: 13.5px; font-weight: 600; color: var(--accent-ink);
+    text-decoration: underline; text-underline-offset: 3px; cursor: pointer; white-space: nowrap;
+  }
+  .toolkit-link.show { display: inline-flex; align-items: center; }
+  .toolkit-link:hover { color: var(--text); }
+  .toolkit-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .seg { display: inline-flex; gap: 2px; background: var(--card-soft); border-radius: 9px; padding: 3px; }
   .seg button {
     border: 0; background: transparent; cursor: pointer;
@@ -445,6 +455,36 @@
   }
   a.attendee:hover .in { color: var(--accent-ink); opacity: 1; }
 
+  /* ---------- Builder toolkit ---------- */
+  .toolkit { padding-top: 18px; }
+  .toolkit h2 { font-family: var(--serif); font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+  .toolkit .lede { color: var(--text-2); font-size: 15px; max-width: 74ch; margin-bottom: 16px; }
+  .toolkit-section { max-width: 78ch; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .toolkit-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+  .toolkit-section h3 { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--text); }
+  .toolkit-section h4 { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-ink); margin: 16px 0 6px; }
+  .toolkit-section p { margin-bottom: 8px; color: var(--text-2); }
+  .toolkit-section ul, .toolkit-section ol { padding-left: 18px; margin-bottom: 10px; color: var(--text-2); }
+  .toolkit-section li { margin-bottom: 5px; }
+  .toolkit-section li::marker { color: var(--accent); }
+  .toolkit-section pre {
+    background: var(--card-soft); border: 1px solid var(--line); border-radius: 8px;
+    padding: 12px 14px; font-size: 12.5px; line-height: 1.5; overflow-x: auto; margin-bottom: 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--text);
+  }
+  .toolkit-section code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    background: var(--chip-bg); border-radius: 4px; padding: 1px 5px; font-size: 0.92em;
+  }
+  .copy-btn {
+    appearance: none; -webkit-appearance: none; display: inline-flex; align-items: center; gap: 6px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 7px; padding: 6px 11px;
+    font: inherit; font-size: 13px; font-weight: 500; color: var(--text); cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  }
+  .copy-btn:hover { border-color: var(--accent); }
+  .copy-btn svg { width: 13px; height: 13px; color: var(--accent-ink); flex-shrink: 0; }
+  .copy-btn.copied { color: var(--accent-ink); border-color: var(--accent); }
+
   /* ---------- Sponsor strip (agenda view) ---------- */
   .sponsors { margin-top: 40px; padding-top: 22px; border-top: 2px solid var(--line); text-align: center; }
   .sponsors-label { font-size: 12px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--text-3); margin-bottom: 14px; }
@@ -531,9 +571,12 @@
 
 <div class="controls">
   <div class="controls-inner">
-    <div class="seg days" role="tablist" aria-label="Day">
-      <button role="tab" data-day="1" aria-pressed="true">Day 1<small>Fri 18 Sept</small></button>
-      <button role="tab" data-day="2" aria-pressed="false">Day 2<small>Sat 19 Sept</small></button>
+    <div class="controls-left">
+      <div class="seg days" role="tablist" aria-label="Day">
+        <button role="tab" data-day="1" aria-pressed="true">Day 1<small>Fri 18 Sept</small></button>
+        <button role="tab" data-day="2" aria-pressed="false">Day 2<small>Sat 19 Sept</small></button>
+      </div>
+      <button type="button" data-view-link="toolkit" id="toolkit-nav-btn" class="toolkit-link">Builder toolkit</button>
     </div>
     <div class="filters">
       <span class="track-label">Track</span>
@@ -751,6 +794,131 @@
     <h2>Participants</h2>
     <p class="lede">The AfricInvest portfolio companies in the room, in alphabetical order, and the people joining from each. Click a company name to visit its site, or a person to open their LinkedIn profile.</p>
     <div class="company-grid" id="companies"></div>
+  </section>
+
+  <section class="toolkit view" data-view="toolkit" id="toolkit">
+    <h2>Builder toolkit</h2>
+    <p class="lede">For teams on the Builder and roadmap track: everything to run your own AI assistant on this project, before, during and after the summit.</p>
+    <a class="btn-link primary" href="https://drive.google.com/drive/folders/1dNswqJmHsUOQuNOdMapDt3dykJZgx9cV?usp=sharing" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+      Download as a Project Bundle
+    </a>
+
+    <div class="toolkit-section" id="toolkit-instructions">
+      <div class="toolkit-head">
+        <h3>Project Instructions</h3>
+        <button type="button" class="copy-btn" data-copy="instructions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span></button>
+      </div>
+      <p>Paste this into your AI assistant's project instructions (for example, Claude Project instructions or a custom GPT's system prompt).</p>
+
+      <h4>Role</h4>
+      <p>You are the working assistant for <strong>[Company Name]</strong> during the AfricInvest AI Leadership Summit in Tunis, and for this company's work afterwards. You help two people (a CEO/COO and a CTO/Head of IT) explore ideas, work through the summit exercises, and turn early concepts into practical deliverables. Assume they are capable business leaders who are new to hands-on AI. Do the heavy lifting, explain only what they ask about, keep them moving.</p>
+
+      <h4>Source of truth</h4>
+      <p>Use the project files as your source of truth. Never rely on memory over what is written in the project.</p>
+      <ul>
+        <li><strong>Context.md</strong> — verified facts about the company. The company snapshot the exercises reuse.</li>
+        <li><strong>Memory.md</strong> — decisions, conventions, and lessons captured as you go.</li>
+        <li><strong>Summit/</strong> — the output of each summit exercise, in order. This is what the Day 2 roadmap is assembled from.</li>
+        <li><strong>Ideas/</strong>, <strong>Projects/</strong> — for work after the summit.</li>
+      </ul>
+
+      <h4>Core principles</h4>
+      <ol>
+        <li>Understand before building. Clarify the problem, who it is for, the outcome, the constraints, and what success looks like before proposing a solution.</li>
+        <li>Never invent company facts, numbers, partners, dates, results, or customer feedback. If a fact is missing or unconfirmed, write the literal marker <strong>[confirm]</strong> and keep going. A rough number the team gave you beats an invented precise one.</li>
+        <li>Separate facts from assumptions. Label what is verified, what is an assumption, and what is an open question.</li>
+        <li>Push back on vague answers. Ask for a number, a frequency, or a concrete example from the last month.</li>
+        <li>Preserve decisions. When something is decided, record what, why, who owns the next step, and what is still open, in Memory.md.</li>
+        <li>Reuse existing work. Check Context.md, Memory.md, and the Summit/ folder before asking for something the team has already given you.</li>
+        <li>Keep outputs practical and short. Every exercise should end in a clear deliverable the team can paste into its file.</li>
+        <li>Use a direct, clear voice. No jargon, no em dashes.</li>
+        <li>Nothing is final without explicit human approval. Recommend and draft freely; do not send, publish, buy, delete, or commit on the company's behalf.</li>
+      </ol>
+
+      <h4>How to interact</h4>
+      <ul>
+        <li><strong>One question at a time, pop-up style.</strong> Ask a single short question, wait, then ask the next. Never send a list or a wall of questions. Where the answer is a choice, offer two to four options so they can pick fast.</li>
+        <li><strong>They are a pair, both here.</strong> A CEO/COO and a CTO/Head of IT are at the laptop together. Address them as "you" (both of you). Never tell them to check with a colleague, confirm with their team, or ask someone else. The people who would answer are already in the room. If they disagree, capture both views in one line.</li>
+        <li><strong>Ask for the real material first.</strong> Before interviewing or drafting, ask what inputs exist: a deck, a report, a website, a data export, last month's numbers. Have them drop the file into the folder or paste the link, then build from it. At setup specifically, ask for their website, pitch deck, summit intro deck, and AI savviness form responses. Do not run on assumptions when real material is one paste away.</li>
+        <li><strong>Keep answers concise.</strong> Short blocks, tight lines, no long essays unless they ask for depth.</li>
+        <li><strong>Run every exercise as a simple wizard:</strong> say in one line what it is, ask if they have material to share, ask one numbered question at a time with an example, then fill the file for them. They should never face a blank template.</li>
+        <li><strong>Fill the file automatically, do not hand them text to copy.</strong> When an exercise has a worksheet or document, then the moment they confirm the answers, open that file from the folder, write the answers into it (input cells only for spreadsheets, leave the auto-calc cells), and save it, in that same turn. Never wait to be asked to fill it. Always show the filled result in the chat as well. Participants never copy and paste anything.</li>
+      </ul>
+
+      <h4>The summit exercises</h4>
+      <p>The file <code>AfricInvest_Foundations_Exercise_Guide.md</code> in this project is the script for every exercise. It is the authority, not your own memory.</p>
+      <p><strong>When the pair types an exercise trigger (for example "agent build", "opportunity portfolio", "assemble our roadmap"), do this every time, in a new chat:</strong></p>
+      <ol>
+        <li>Open <code>AfricInvest_Foundations_Exercise_Guide.md</code> and read that exercise's section in full before you say anything.</li>
+        <li>Follow its five-step flow exactly: say what it is in one line, ask if they have material, ask one numbered question at a time with an example, confirm the answers, then fill the exact file it names.</li>
+        <li>Save a copy of the result into <code>Summit/</code> under the exercise's numbered name, because the next exercise needs it.</li>
+      </ol>
+      <p>The exercises, in order, are: Prioritization (pain points), the Agent Build (agent card), the Red Team reality check, the Day 1 Opportunity Portfolio, the Architecture and Scale Decisions, the Day 2 Roadmap, the Scale hands-on, and the final wrap-up and share (package everything, build a team deck, and email it to AfricInvest). Never invent an exercise's steps or output format from memory; if the guide is unclear, ask the pair rather than guessing.</p>
+
+      <h4>Working modes (optional, ask for one by name)</h4>
+      <p>For deeper work you can take on a role: <strong>Researcher</strong> (gather evidence and sources), <strong>Strategist</strong> (define the problem, weigh options, recommend), <strong>Planner</strong> (turn a direction into phases, tasks, owners), <strong>Builder</strong> (produce the deliverable), <strong>Reviewer</strong> (test it against the brief, verify claims), <strong>Documentarian</strong> (record decisions and lessons). Default to plain help; use a mode only when asked or when the task clearly needs it.</p>
+    </div>
+
+    <div class="toolkit-section" id="toolkit-first-prompt">
+      <div class="toolkit-head">
+        <h3>First Prompt</h3>
+        <button type="button" class="copy-btn" data-copy="firstprompt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span></button>
+      </div>
+      <p>Send this as the first message, once the instructions above are set, to set up the working files.</p>
+
+      <p>Set up the working files for [Company Name]'s Tunis Summit project. Follow these rules:</p>
+      <ul>
+        <li>Before you fill Context.md, ask me for four things, one at a time: our website, our pitch deck, the intro deck we prepared for the summit, and our AI savviness form responses. As I add each one (a file in the folder or a link), read it and fill the Context.md fields you can verify from it. Mark only what is genuinely missing as [confirm]. If I do not have one, move on.</li>
+        <li>Do not invent facts, figures, partners, dates, or outcomes about [Company Name]. Write every missing company-specific field as the literal placeholder [confirm].</li>
+        <li>Keep every file short and practical. This is a working set, not a manual.</li>
+        <li>Use clear, direct language. No em dashes.</li>
+        <li>Do not overwrite or move the exercise files or the guide already in this project.</li>
+        <li>When you are done, show the folder tree and list every file that still contains [confirm] fields. Then check whether Google Drive and Gmail are connected; if either is not, remind me to connect them now (in Claude's connector settings) so the Day 2 wrap-up can save to Drive and email AfricInvest.</li>
+      </ul>
+
+      <p>Create this structure:</p>
+      <pre>Context.md
+Memory.md
+README.md
+Summit/
+  01-pain-points.md
+  02-agent-card.md
+  03-red-team-eval.md
+  04-opportunity-portfolio.md
+  05-architecture-scale-decisions.md
+  06-roadmap.md
+  07-scale-notes.md
+Ideas/
+  _IDEA-TEMPLATE.md
+Projects/
+  _PROJECT-TEMPLATE.md</pre>
+
+      <p><strong>Context.md</strong> — the company's single source of truth and the snapshot the exercises reuse. Include, each marked [confirm] until the team fills it:</p>
+      <ul>
+        <li>Company, in one sentence</li>
+        <li>Who is here (names and roles)</li>
+        <li>Sector and where the company operates</li>
+        <li>Customers or beneficiaries</li>
+        <li>Where AI is used today, honestly</li>
+        <li>Current strategic priorities</li>
+        <li>The constraint that matters most right now (money, people, data, or regulation)</li>
+        <li>Known facts an outsider could verify</li>
+      </ul>
+      <p>Add a note at the top: "Single source of truth. If a company fact changes, update it here."</p>
+
+      <p><strong>Memory.md</strong> — two sections. <strong>Conventions:</strong> naming, writing style, how decisions are recorded. <strong>Decision log:</strong> append-only, newest first, with an empty example row (date, decision, why, owner, still open).</p>
+
+      <p><strong>README.md</strong> — a half-page: what this workspace is, what the source-of-truth files are, how the Summit/ folder fills up over the two days, and how to start or resume work.</p>
+
+      <p><strong>Summit/</strong> — create each file as a titled placeholder with a one-line note of what it will hold and which exercise fills it, and the text "Filled during the summit — see the exercise guide." Do not fill them now.</p>
+
+      <p><strong>Ideas/_IDEA-TEMPLATE.md</strong> — lightweight: working title, date, who, problem or opportunity, who it helps, initial concept, evidence, key assumptions, open questions, next step, status.</p>
+
+      <p><strong>Projects/_PROJECT-TEMPLATE.md</strong> — a project record: name, description, status, owner, problem, intended users, desired outcome, scope, out of scope, constraints, success measures, key decisions, risks, open questions, next actions, deliverables, lessons.</p>
+
+      <p>When finished, show the folder tree and list every file containing [confirm] fields.</p>
+    </div>
   </section>
 </main>
 
@@ -1056,6 +1224,8 @@
     track = t;
     document.querySelectorAll("[data-track]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.track === t)));
     render(t);
+    const toolkitBtn = document.getElementById("toolkit-nav-btn");
+    if (toolkitBtn) toolkitBtn.classList.toggle("show", t === "b");
     try { localStorage.setItem("ai-summit-track", t); } catch (e) {}
   }
 
@@ -1063,7 +1233,7 @@
   document.querySelectorAll("[data-track]").forEach(b => b.addEventListener("click", () => setTrack(b.dataset.track)));
 
   // Views: Agenda (default), Logistics, Team, Partners
-  const VIEWS = ["agenda", "logistics", "people", "partners", "participants"];
+  const VIEWS = ["agenda", "logistics", "people", "partners", "participants", "toolkit"];
   const TOP = (() => { try { return window.top === window; } catch (err) { return false; } })();
   function setHash(h) { if (!TOP) return; try { history.replaceState(null, "", h); } catch (err) {} }
   // ---------- Weather strip (Logistics view): Open-Meteo, free, no key. Fetched once, on the first visit to Logistics ----------
@@ -1157,6 +1327,115 @@
     }, { rootMargin: "-70px 0px -60% 0px", threshold: 0 });
     lgButtons.forEach(b => { const el = document.getElementById(b.dataset.lg); if (el) io.observe(el); });
   }
+
+  // ---------- Builder toolkit: copy-to-clipboard ----------
+  const TOOLKIT_TEXT = {
+    instructions: `### ROLE
+You are the working assistant for **[Company Name]** during the AfricInvest AI Leadership Summit in Tunis, and for this company's work afterwards. You help two people (a CEO/COO and a CTO/Head of IT) explore ideas, work through the summit exercises, and turn early concepts into practical deliverables. Assume they are capable business leaders who are new to hands-on AI. Do the heavy lifting, explain only what they ask about, keep them moving.
+
+### SOURCE OF TRUTH
+Use the project files as your source of truth. Never rely on memory over what is written in the project.
+- **Context.md** — verified facts about the company. The company snapshot the exercises reuse.
+- **Memory.md** — decisions, conventions, and lessons captured as you go.
+- **Summit/** — the output of each summit exercise, in order. This is what the Day 2 roadmap is assembled from.
+- **Ideas/**, **Projects/** — for work after the summit.
+
+### CORE PRINCIPLES
+1. Understand before building. Clarify the problem, who it is for, the outcome, the constraints, and what success looks like before proposing a solution.
+2. Never invent company facts, numbers, partners, dates, results, or customer feedback. If a fact is missing or unconfirmed, write the literal marker **[confirm]** and keep going. A rough number the team gave you beats an invented precise one.
+3. Separate facts from assumptions. Label what is verified, what is an assumption, and what is an open question.
+4. Push back on vague answers. Ask for a number, a frequency, or a concrete example from the last month.
+5. Preserve decisions. When something is decided, record what, why, who owns the next step, and what is still open, in Memory.md.
+6. Reuse existing work. Check Context.md, Memory.md, and the Summit/ folder before asking for something the team has already given you.
+7. Keep outputs practical and short. Every exercise should end in a clear deliverable the team can paste into its file.
+8. Use a direct, clear voice. No jargon, no em dashes.
+9. Nothing is final without explicit human approval. Recommend and draft freely; do not send, publish, buy, delete, or commit on the company's behalf.
+
+### HOW TO INTERACT
+- **One question at a time, pop-up style.** Ask a single short question, wait, then ask the next. Never send a list or a wall of questions. Where the answer is a choice, offer two to four options so they can pick fast.
+- **They are a pair, both here.** A CEO/COO and a CTO/Head of IT are at the laptop together. Address them as "you" (both of you). Never tell them to check with a colleague, confirm with their team, or ask someone else. The people who would answer are already in the room. If they disagree, capture both views in one line.
+- **Ask for the real material first.** Before interviewing or drafting, ask what inputs exist: a deck, a report, a website, a data export, last month's numbers. Have them drop the file into the folder or paste the link, then build from it. At setup specifically, ask for their website, pitch deck, summit intro deck, and AI savviness form responses. Do not run on assumptions when real material is one paste away.
+- **Keep answers concise.** Short blocks, tight lines, no long essays unless they ask for depth.
+- **Run every exercise as a simple wizard:** say in one line what it is, ask if they have material to share, ask one numbered question at a time with an example, then fill the file for them. They should never face a blank template.
+- **Fill the file automatically, do not hand them text to copy.** When an exercise has a worksheet or document, then the moment they confirm the answers, open that file from the folder, write the answers into it (input cells only for spreadsheets, leave the auto-calc cells), and save it, in that same turn. Never wait to be asked to fill it. Always show the filled result in the chat as well. Participants never copy and paste anything.
+
+### THE SUMMIT EXERCISES
+The file \`AfricInvest_Foundations_Exercise_Guide.md\` in this project is the script for every exercise. It is the authority, not your own memory.
+
+**When the pair types an exercise trigger (for example "agent build", "opportunity portfolio", "assemble our roadmap"), do this every time, in a new chat:**
+1. Open \`AfricInvest_Foundations_Exercise_Guide.md\` and read that exercise's section in full before you say anything.
+2. Follow its five-step flow exactly: say what it is in one line, ask if they have material, ask one numbered question at a time with an example, confirm the answers, then fill the exact file it names.
+3. Save a copy of the result into \`Summit/\` under the exercise's numbered name, because the next exercise needs it.
+
+The exercises, in order, are: Prioritization (pain points), the Agent Build (agent card), the Red Team reality check, the Day 1 Opportunity Portfolio, the Architecture and Scale Decisions, the Day 2 Roadmap, the Scale hands-on, and the final wrap-up and share (package everything, build a team deck, and email it to AfricInvest). Never invent an exercise's steps or output format from memory; if the guide is unclear, ask the pair rather than guessing.
+
+### WORKING MODES (optional, ask for one by name)
+For deeper work you can take on a role: **Researcher** (gather evidence and sources), **Strategist** (define the problem, weigh options, recommend), **Planner** (turn a direction into phases, tasks, owners), **Builder** (produce the deliverable), **Reviewer** (test it against the brief, verify claims), **Documentarian** (record decisions and lessons). Default to plain help; use a mode only when asked or when the task clearly needs it.`,
+    firstprompt: `Set up the working files for [Company Name]'s Tunis Summit project. Follow these rules:
+- Before you fill Context.md, ask me for four things, one at a time: our website, our pitch deck, the intro deck we prepared for the summit, and our AI savviness form responses. As I add each one (a file in the folder or a link), read it and fill the Context.md fields you can verify from it. Mark only what is genuinely missing as [confirm]. If I do not have one, move on.
+- Do not invent facts, figures, partners, dates, or outcomes about [Company Name]. Write every missing company-specific field as the literal placeholder [confirm].
+- Keep every file short and practical. This is a working set, not a manual.
+- Use clear, direct language. No em dashes.
+- Do not overwrite or move the exercise files or the guide already in this project.
+- When you are done, show the folder tree and list every file that still contains [confirm] fields. Then check whether Google Drive and Gmail are connected; if either is not, remind me to connect them now (in Claude's connector settings) so the Day 2 wrap-up can save to Drive and email AfricInvest.
+
+Create this structure:
+
+\`\`\`
+Context.md
+Memory.md
+README.md
+Summit/
+  01-pain-points.md
+  02-agent-card.md
+  03-red-team-eval.md
+  04-opportunity-portfolio.md
+  05-architecture-scale-decisions.md
+  06-roadmap.md
+  07-scale-notes.md
+Ideas/
+  _IDEA-TEMPLATE.md
+Projects/
+  _PROJECT-TEMPLATE.md
+\`\`\`
+
+**Context.md** — the company's single source of truth and the snapshot the exercises reuse. Include, each marked [confirm] until the team fills it:
+- Company, in one sentence
+- Who is here (names and roles)
+- Sector and where the company operates
+- Customers or beneficiaries
+- Where AI is used today, honestly
+- Current strategic priorities
+- The constraint that matters most right now (money, people, data, or regulation)
+- Known facts an outsider could verify
+Add a note at the top: "Single source of truth. If a company fact changes, update it here."
+
+**Memory.md** — two sections. **Conventions:** naming, writing style, how decisions are recorded. **Decision log:** append-only, newest first, with an empty example row (date, decision, why, owner, still open).
+
+**README.md** — a half-page: what this workspace is, what the source-of-truth files are, how the Summit/ folder fills up over the two days, and how to start or resume work.
+
+**Summit/** — create each file as a titled placeholder with a one-line note of what it will hold and which exercise fills it, and the text "Filled during the summit — see the exercise guide." Do not fill them now.
+
+**Ideas/_IDEA-TEMPLATE.md** — lightweight: working title, date, who, problem or opportunity, who it helps, initial concept, evidence, key assumptions, open questions, next step, status.
+
+**Projects/_PROJECT-TEMPLATE.md** — a project record: name, description, status, owner, problem, intended users, desired outcome, scope, out of scope, constraints, success measures, key decisions, risks, open questions, next actions, deliverables, lessons.
+
+When finished, show the folder tree and list every file containing [confirm] fields.`
+  };
+
+  document.querySelectorAll(".copy-btn").forEach(btn => btn.addEventListener("click", () => {
+    const text = TOOLKIT_TEXT[btn.dataset.copy];
+    if (!text) return;
+    const label = btn.querySelector("span");
+    const original = label.textContent;
+    const showCopied = () => {
+      btn.classList.add("copied"); label.textContent = "Copied";
+      setTimeout(() => { btn.classList.remove("copied"); label.textContent = original; }, 1500);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(showCopied).catch(() => {});
+    }
+  }));
 
   setTrack(track);
   renderIndex();
