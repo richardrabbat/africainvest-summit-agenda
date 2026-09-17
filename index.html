@@ -931,9 +931,8 @@ Projects/
   // ---------- Material library (from the Summit material folder) ----------
   const MAT = {
     opening:        { n: "Opening slides",                 t: "slides", id: "1hn_nG1oRS73Z2W2yQrwqZExkCho4oNQWJ9qCZbmxtdw" },
-    teamintro:      { n: "Team intro template",            t: "slides", id: "144CWErVGJrCizWbdNYrSmVO_pvJ55EDVsR_4CNQ3adM" },
+    teamintro:      { n: "Participant intro slides",       t: "file",   id: "19v1_Ce4LXHQutPp56mrQdzM2KEqa5vxj" },
     fundamentals:   { n: "AI fundamentals masterclass",    t: "slides", id: "1ZY2-iGIlLL4DBuedtuh_Abdu_VnZV7D8IRuVIPJx_9U" },
-    roadmapbrief:   { n: "Roadmap briefing",               t: "slides", id: "1mgoOWxxGfGzn3kugF3AfpEz5aG0As-7PqEVdi17c8dM" },
     archbrief:      { n: "Architecture and scale briefing", t: "slides", id: "1ZgruyLiqjQRpw5FbWIbKqHbgvCFetzqHoQW6TU_ISXI" },
     portfolio:      { n: "Day 1 opportunity portfolio",    t: "sheet",  id: "1hjUkBmCd10utx_n0-yaw4w6d6gf-175_K_ZnOVRtQcc" },
     archdecisions:  { n: "Architecture and scale decisions", t: "sheet", id: "15zBgMyMn01cDeNqIp4Yjmx7_Kwi3adRpibV-lEnS5CU" },
@@ -954,12 +953,14 @@ Projects/
   const URLS = {
     slides: id => `https://docs.google.com/presentation/d/${id}/edit`,
     sheet:  id => `https://docs.google.com/spreadsheets/d/${id}/edit`,
-    doc:    id => `https://docs.google.com/document/d/${id}/edit`
+    doc:    id => `https://docs.google.com/document/d/${id}/edit`,
+    file:   id => `https://drive.google.com/file/d/${id}/view`
   };
   const ICON = {
     slides: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="3" width="13" height="9" rx="1.5"/><path d="M6.5 6v3l3-1.5z" fill="currentColor" stroke="none"/></svg>',
     sheet:  '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="12" height="12" rx="1.5"/><path d="M2 6.5h12M2 10.5h12M7 2v12"/></svg>',
-    doc:    '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M6 8h4M6 11h4"/></svg>'
+    doc:    '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M6 8h4M6 11h4"/></svg>',
+    file:   '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="3" width="13" height="9" rx="1.5"/><path d="M6.5 6v3l3-1.5z" fill="currentColor" stroke="none"/></svg>'
   };
   const PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
   const CAT = { insp: "Inspiration", found: "Foundational learning", peer: "Peer learning", take: "Takeaways and roadmaps" };
@@ -970,8 +971,8 @@ Projects/
     { s: "08:30", e: "08:45", cat: "insp", title: "Opening: thank-yous and acknowledgements", who: "Khaled" },
     { s: "08:45", e: "09:05", cat: "insp", title: "Opening: inspirational talk", who: "Tarak Kharrat" },
     { s: "09:05", e: "09:20", cat: "insp", title: "Opening: who we are and framing the two days", who: "Richard", mat: ["opening"] },
-    { s: "09:20", e: "09:27", cat: "insp", title: "Opening: Open Startup", who: "Houda" },
-    { s: "09:27", e: "10:00", cat: "insp", title: "Team intros: 15 teams, 2 minutes each", who: "Dali", mat: ["teamintro"] },
+    { s: "09:20", e: "09:27", cat: "insp", title: "Opening: Open Startup", who: "Zack" },
+    { s: "09:27", e: "10:00", cat: "insp", title: "Team intros: 23 teams, about 1 minute each", who: "Dali", mat: ["teamintro"] },
     { s: "10:00", e: "10:30", brk: true, title: "Coffee break", note: "Tracks split into two rooms after the break" },
     { s: "10:30", e: "11:45", cat: "found", split: {
         b: { title: "AI fundamentals masterclass, with 3 hands-on", who: "Richard", mat: ["fundamentals"] },
@@ -986,21 +987,23 @@ Projects/
         b: { title: "The agent build", who: "Ghazi and Zack", mat: ["agentbuild"] },
         d: { title: "Hot seats: Kredete with Ade, then PalmPay with Chen", who: "Anthony and Jean-Claude" } } },
     { s: "12:45", e: "13:30", brk: true, title: "Lunch" },
-    { s: "13:30", e: "14:30", cat: "peer", split: {
+    { s: "13:30", e: "14:00", cat: "peer", split: {
         b: { title: "Red-team and evals: the Reality Check", who: "Zack and Ghazi", mat: ["redteam"] },
-        d: { title: "Hot seats: GoMyCode with Yahya, then Turaco with Ted and Niraj", who: "Anthony and Jean-Claude" } } },
-    { s: "14:30", e: "14:40", cat: "take", title: "Decisions doc prep", who: "Richard", mat: ["archbrief"], note: "Everyone back in the main room" },
-    { s: "14:40", e: "14:45", cat: "take", title: "Walk-through of the worksheet", who: "Richard", mat: ["archdecisions"] },
-    { s: "14:45", e: "15:30", cat: "peer", title: "Debate 1: multi-model architectures. Pure-Anthropic strategy vs. mixing multiple models (Oxford style)", who: "Richard and Khaled", mat: ["debate1"] },
-    { s: "15:30", e: "16:00", cat: "insp", title: "Inspiration showcase: Aura with Grant, Bfree with Moses, Kredete with Gary", who: "Dali" },
-    { s: "16:00", e: "16:15", brk: true, title: "Coffee break" },
-    { s: "16:15", e: "16:45", cat: "insp", title: "Keynote speech", who: "Jean-Claude" },
-    { s: "16:45", e: "17:30", cat: "peer", title: "Debate 2: cost and pricing paradigms. Tokens vs. outcome-based pricing, cost-plus vs. success fees (Oxford style)", who: "Richard and Khaled", mat: ["debate2"] },
-    { s: "17:30", e: "17:45", cat: "take", title: "Roadmap walkthrough (Builder and roadmap)", who: "Zack and Ghazi", mat: ["roadmapbrief"] },
-    { s: "17:45", e: "18:15", cat: "take", title: "Roadmap Lab I: first draft", who: "AfricInvest and Open Startup coaches", mat: ["portfolio"] },
-    { s: "18:15", e: "18:30", cat: "take", title: "Day one close", who: "Richard and Khaled", mat: ["day1close"] },
-    { s: "18:30", e: "18:45", cat: "take", title: "Satisfaction survey (QR code, about 5 minutes)", who: "Ghazi" },
-    { s: "18:45", e: "19:15", brk: true, title: "Break: reset and freshen up" },
+        d: { title: "Hot seats: GoMyCode with Yahya", who: "Anthony and Jean-Claude" } } },
+    { s: "14:00", e: "14:30", cat: "take", split: {
+        b: { title: "Roadmap Lab I: first draft", who: "AfricInvest and Open Startup coaches", mat: ["portfolio"] },
+        d: { title: "Hot seats: Turaco with Ted and Niraj", who: "Anthony and Jean-Claude" } } },
+    { s: "14:30", e: "14:40", brk: true, title: "Stretch your legs", note: "Everyone back in the main room" },
+    { s: "14:40", e: "14:50", cat: "take", title: "Decisions doc prep", who: "Richard", mat: ["archbrief"] },
+    { s: "14:50", e: "14:55", cat: "take", title: "Walk-through of the worksheet", who: "Richard", mat: ["archdecisions"] },
+    { s: "14:55", e: "15:40", cat: "peer", title: "Debate 1: multi-model architectures. Pure-Anthropic strategy vs. mixing multiple models (Oxford style)", who: "Richard and Khaled", mat: ["debate1"] },
+    { s: "15:40", e: "16:10", cat: "insp", title: "Inspiration showcase: Aura with Grant, Bfree with Moses, Kredete with Gary", who: "Dali" },
+    { s: "16:10", e: "16:30", brk: true, title: "Coffee break" },
+    { s: "16:30", e: "17:15", cat: "insp", title: "Keynote speech", who: "Jean-Claude" },
+    { s: "17:15", e: "18:00", cat: "peer", title: "Debate 2: cost and pricing paradigms. Tokens vs. outcome-based pricing, cost-plus vs. success fees (Oxford style)", who: "Richard and Khaled", mat: ["debate2"] },
+    { s: "18:00", e: "18:15", cat: "take", title: "Day one close", who: "Richard and Khaled", mat: ["day1close"] },
+    { s: "18:15", e: "18:30", cat: "take", title: "Satisfaction survey (QR code, about 5 minutes)", who: "Ghazi" },
+    { s: "18:30", e: "19:15", brk: true, title: "Break: reset and freshen up" },
     { s: "19:15", e: "19:30", brk: true, title: "Buses take participants to the dinner venue", note: "About 15 minutes" },
     { s: "19:30", e: "21:30", brk: true, title: "Dinner at La Closerie", link: { n: "La Closerie on the map", url: "https://www.google.com/maps/search/?api=1&query=La+Closerie+restaurant+Tunis" } }
   ];
