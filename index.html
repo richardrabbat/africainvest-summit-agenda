@@ -601,11 +601,11 @@
 <main>
 <div class="view" data-view="agenda">
   <section class="day active" id="day1">
-    <div class="day-title">Day 1 <span>Friday 18 September · 08:30 to 21:30</span></div>
+    <div class="day-title">Day 1 <span>Friday 18 September · 08:15 to 21:30</span></div>
     <div class="timeline" id="tl1"></div>
   </section>
   <section class="day" id="day2">
-    <div class="day-title">Day 2 <span>Saturday 19 September · 09:00 to 21:30</span></div>
+    <div class="day-title">Day 2 <span>Saturday 19 September · 08:45 to 21:30</span></div>
     <div class="timeline" id="tl2"></div>
   </section>
 
@@ -942,7 +942,8 @@ Projects/
     redteam:        { n: "Red-team and evals slides",      t: "slides", id: "1yJANItw-L0Kxx4Gtrlak56p5np6PKNa-W3W-0z2Gkls" },
     debate1:        { n: "Debate 1 · Multi-model architectures", t: "slides", id: "160APZH9UHRsBPbkHS2ANHndkl5qUY3tuGe1GL04udyc" },
     debate2:        { n: "Debate 2 · Cost and pricing",    t: "slides", id: "1X1Sbkkm0Pp7CFnTcCMAE_34w8cxq5Uo4jDRLW3xSsl8" },
-    day1close:      { n: "Day 1 close",                    t: "slides", id: "1rXyn-BAHeCUTPFLI_xtz_IR3oFnXNLxkUmeC0FHLXc4" },
+    day1close:      { n: "Day 1 close",                    t: "file",   id: "1EQZN-xPVYoHbjC4ppfc4p5H1jSkkS-yX" },
+    housevote:      { n: "Debate vote: the house divides",  t: "web",    id: "https://richardrabbat.github.io/founder-advisory-board/public/house_divides.html" },
     scale:          { n: "Data foundations and scale session", t: "slides", id: "1e_PK6F9arIqoYnMAtm4as9zNEuhxX1_ijEB9z0tKBvM" },
     agentruns:      { n: "Agent runs dataset (50 runs)",   t: "sheet",  id: "1gprsxsQuFXWSRzoWbSUbRwFmL-ZLKsZir4DXyx7y7nI" },
     orgtalent:      { n: "Org and talent session",         t: "slides", id: "17MCWIvRnwD7MMwdb2VKot3Cti3MsFXul7A9QhIDzcc8" },
@@ -954,13 +955,15 @@ Projects/
     slides: id => `https://docs.google.com/presentation/d/${id}/edit`,
     sheet:  id => `https://docs.google.com/spreadsheets/d/${id}/edit`,
     doc:    id => `https://docs.google.com/document/d/${id}/edit`,
-    file:   id => `https://drive.google.com/file/d/${id}/view`
+    file:   id => `https://drive.google.com/file/d/${id}/view`,
+    web:    id => id
   };
   const ICON = {
     slides: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="3" width="13" height="9" rx="1.5"/><path d="M6.5 6v3l3-1.5z" fill="currentColor" stroke="none"/></svg>',
     sheet:  '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="12" height="12" rx="1.5"/><path d="M2 6.5h12M2 10.5h12M7 2v12"/></svg>',
     doc:    '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M6 8h4M6 11h4"/></svg>',
-    file:   '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="3" width="13" height="9" rx="1.5"/><path d="M6.5 6v3l3-1.5z" fill="currentColor" stroke="none"/></svg>'
+    file:   '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="3" width="13" height="9" rx="1.5"/><path d="M6.5 6v3l3-1.5z" fill="currentColor" stroke="none"/></svg>',
+    web:    '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6.2"/><path d="M1.8 8h12.4M8 1.8c2 2 2 10.4 0 12.4M8 1.8c-2 2-2 10.4 0 12.4"/></svg>'
   };
   const PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
   const CAT = { insp: "Inspiration", found: "Foundational learning", peer: "Peer learning", take: "Takeaways and roadmaps" };
@@ -968,6 +971,7 @@ Projects/
 
   // ---------- Day 1 ----------
   const DAY1 = [
+    { s: "08:15", e: "08:30", brk: true, title: "Welcome and check-in desk", note: "Farah" },
     { s: "08:30", e: "08:45", cat: "insp", title: "Opening: thank-yous and acknowledgements", who: "Khaled" },
     { s: "08:45", e: "09:05", cat: "insp", title: "Opening: inspirational talk", who: "Tarak Kharrat" },
     { s: "09:05", e: "09:20", cat: "insp", title: "Opening: who we are and framing the two days", who: "Richard", mat: ["opening"] },
@@ -996,7 +1000,7 @@ Projects/
     { s: "14:30", e: "14:40", brk: true, title: "Stretch your legs", note: "Everyone back in the main room" },
     { s: "14:40", e: "14:50", cat: "take", title: "Decisions doc prep", who: "Richard", mat: ["archbrief"] },
     { s: "14:50", e: "14:55", cat: "take", title: "Walk-through of the worksheet", who: "Richard", mat: ["archdecisions"] },
-    { s: "14:55", e: "15:40", cat: "peer", title: "Debate 1: multi-model architectures. Pure-Anthropic strategy vs. mixing multiple models (Oxford style)", who: "Richard and Khaled", mat: ["debate1"] },
+    { s: "14:55", e: "15:40", cat: "peer", title: "Debate 1: multi-model architectures. Pure-Anthropic strategy vs. mixing multiple models, with Nile and Spoon Consulting vs. iSON and Paytic", who: "Richard and Khaled", mat: ["debate1", "housevote"] },
     { s: "15:40", e: "16:10", cat: "insp", title: "Inspiration showcase: Aura with Grant, Bfree with Moses, Kredete with Gary", who: "Dali" },
     { s: "16:10", e: "16:30", brk: true, title: "Coffee break" },
     { s: "16:30", e: "17:15", cat: "insp", title: "Keynote speech", who: "Jean-Claude" },
@@ -1009,8 +1013,9 @@ Projects/
 
   // ---------- Day 2 ----------
   const DAY2 = [
+    { s: "08:45", e: "09:00", brk: true, title: "Welcome and check-in desk", note: "Farah" },
     { s: "09:00", e: "09:05", cat: "take", title: "Day 2 reset", who: "Dali" },
-    { s: "09:05", e: "10:05", cat: "peer", title: "Debate 2: cost and pricing paradigms. Tokens vs. outcome-based pricing, cost-plus vs. success fees (Oxford style)", who: "Richard and Khaled", mat: ["debate2"] },
+    { s: "09:05", e: "10:05", cat: "peer", title: "Debate 2: cost and pricing paradigms. Tokens vs. outcome-based pricing, with JEMS and I&M Group vs. PalmPay and Aura", who: "Richard and Khaled", mat: ["debate2"] },
     { s: "10:05", e: "10:10", brk: true, title: "Separation", note: "Builders leave the room" },
     { s: "10:10", e: "10:55", cat: "found", split: {
         b: { title: "Roadmap & Agents", who: "Jean-Claude" },
